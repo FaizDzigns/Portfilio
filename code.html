@@ -43,7 +43,8 @@
             width: 100vw;
             height: 100vh;
             scroll-behavior: smooth;
-            overflow: hidden;
+            /* Allow vertical scrolling on the html element */
+            overflow-x: hidden; /* Prevent horizontal scrolling on html */
             cursor: none;
         }
 
@@ -54,8 +55,8 @@
             line-height: 1.6;
             background-color: var(--white);
             color: var(--dark);
-            overflow-y: auto;
-            overflow-x: hidden;
+            overflow-y: auto; /* Allow vertical scrolling on body if html doesn't handle it */
+            overflow-x: hidden; /* Prevent horizontal scrolling on body */
         }
 
         a {
@@ -76,6 +77,14 @@
         input[type="submit"] {
             cursor: none;
         }
+
+        /* Universal image responsiveness */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block; /* Ensures images don't have extra space below them */
+        }
+
 
         /* Reusable Button Components */
         .btn {
@@ -105,7 +114,7 @@
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
             letter-spacing: 1px;
             text-transform: uppercase;
-            text-align: center; /* Added to center the text */
+            text-align: center;
         }
 
         .about-btn:hover {
@@ -249,7 +258,6 @@
             margin-bottom: 20px;
             letter-spacing: 5px;
             line-height: 0.9;
-            /* Removed white-space: nowrap; to allow wrapping */
         }
 
         .hero-title .char {
@@ -267,7 +275,6 @@
             margin-bottom: 50px;
             position: relative;
             overflow: hidden;
-            /* Removed white-space: nowrap; to allow wrapping */
         }
 
         /* About Section Styles */
@@ -333,16 +340,15 @@
 
         .skills-container {
             width: 100%;
-            overflow-x: hidden; /* Always hide overflow for animation */
-            white-space: nowrap; /* Ensures items stay in one line */
+            overflow-x: hidden;
+            white-space: nowrap;
         }
 
         .skills-track {
             display: flex;
-            flex-wrap: nowrap; /* Always prevent wrapping */
+            flex-wrap: nowrap;
             will-change: transform;
-            justify-content: flex-start; /* Align items to the start */
-            /* Width will be set by JS for animation */
+            justify-content: flex-start;
         }
 
         .skill-card {
@@ -1119,7 +1125,7 @@
         <nav class="main-nav">
             <a href="#hero" class="nav-logo">
                 <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/mainlogo.svg"
-                    alt="Faiz Dzigns Logo">
+                    alt="Faiz Dzigns Logo" decoding="async">
             </a>
             <div class="nav-links">
                 <a href="#about" class="nav-item">About</a>
@@ -1178,63 +1184,63 @@
                 <div class="skills-track">
                     <div class="skill-card">
                         <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/Ps.svg"
-                            alt="Photoshop Icon">
+                            alt="Photoshop Icon" loading="lazy" decoding="async">
                         Adobe Photoshop
                     </div>
                     <div class="skill-card">
                         <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/Illustrator.svg"
-                            alt="Illustrator Icon">
+                            alt="Illustrator Icon" loading="lazy" decoding="async">
                         Adobe Illustrator
                     </div>
                     <div class="skill-card">
                         <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/ae.svg"
-                            alt="After Effects Icon">
+                            alt="After Effects Icon" loading="lazy" decoding="async">
                         Adobe After Effects
                     </div>
                     <div class="skill-card">
                         <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/inkscape.svg"
-                            alt="Inkscape Icon">
+                            alt="Inkscape Icon" loading="lazy" decoding="async">
                         Inkscape
                     </div>
                     <div class="skill-card">
                         <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/canva.svg"
-                            alt="Canva Icon">
+                            alt="Canva Icon" loading="lazy" decoding="async">
                         Canva
                     </div>
                     <div class="skill-card">
                         <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/Ap.svg"
-                            alt="Affinity Photo Icon">
+                            alt="Affinity Photo Icon" loading="lazy" decoding="async">
                         Affinity Photo
                     </div>
 
                     <div class="skill-card">
                         <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/Ps.svg"
-                            alt="Photoshop Icon">
+                            alt="Photoshop Icon" loading="lazy" decoding="async">
                         Adobe Photoshop
                     </div>
                     <div class="skill-card">
                         <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/Illustrator.svg"
-                            alt="Illustrator Icon">
+                            alt="Illustrator Icon" loading="lazy" decoding="async">
                         Adobe Illustrator
                     </div>
                     <div class="skill-card">
                         <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/ae.svg"
-                            alt="After Effects Icon">
+                            alt="After Effects Icon" loading="lazy" decoding="async">
                         Adobe After Effects
                     </div>
                     <div class="skill-card">
                         <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/inkscape.svg"
-                            alt="Inkscape Icon">
+                            alt="Inkscape Icon" loading="lazy" decoding="async">
                         Inkscape
                     </div>
                     <div class="skill-card">
                         <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/canva.svg"
-                            alt="Canva Icon">
+                            alt="Canva Icon" loading="lazy" decoding="async">
                         Canva
                     </div>
                     <div class="skill-card">
                         <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/Ap.svg"
-                            alt="Affinity Photo Icon">
+                            alt="Affinity Photo Icon" loading="lazy" decoding="async">
                         Affinity Photo
                     </div>
                 </div>
@@ -1297,7 +1303,7 @@
             <div class="my-work-grid">
                 <a href="aurelia.html" class="project-card-link transition-link">
                     <div class="project-card">
-                        <img src="Project/Aurelia/1.png" alt="Aurelia Logo">
+                        <img src="Project/Aurelia/1.png" alt="Aurelia Logo" loading="lazy" decoding="async">
                         <h3>Aurelia</h3>
                         <p>Logo Design for a Luxury Apparel Brand.</p>
                         <span class="primary-btn">View Details</span>
@@ -1306,7 +1312,7 @@
 
                 <a href="veq.html" class="project-card-link transition-link">
                     <div class="project-card">
-                        <img src="Project/Veq/1.png" alt="VEQ Logo">
+                        <img src="Project/Veq/1.png" alt="VEQ Logo" loading="lazy" decoding="async">
                         <h3>VEQ</h3>
                         <p>Logo Design for a Sneaker Brand.</p>
                         <span class="primary-btn">View Details</span>
@@ -1315,7 +1321,7 @@
 
                 <a href="zovet.html" class="project-card-link transition-link">
                     <div class="project-card">
-                        <img src="Project/Zovet/1.png" alt="Zovet Logo">
+                        <img src="Project/Zovet/1.png" alt="Zovet Logo" loading="lazy" decoding="async">
                         <h3>ZOVET</h3>
                         <p>Brand Identity Design for a Luxury Watch Company.</p>
                         <span class="primary-btn">View Details</span>
@@ -1359,7 +1365,7 @@
             <div class="footer-bottom">
                 <div class="footer-left">
                     <div class="footer-logo">
-                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/mainlogo.svg" alt="Faiz Dzigns Logo">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/mainlogo.svg" alt="Faiz Dzigns Logo" loading="lazy" decoding="async">
                     </div>
                 </div>
                 <div class="footer-center">
