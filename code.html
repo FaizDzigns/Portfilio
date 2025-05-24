@@ -303,6 +303,7 @@
         }
 
         .about-heading {
+            font-family: var(--passion-one); /* Changed to Passion One font */
             font-size: 3em;
             margin-bottom: 20px;
             color: var(--white);
@@ -315,6 +316,7 @@
         }
 
         .about-description {
+            font-family: var(--garet); /* Set font for description */
             font-size: 1.2em;
             line-height: 1.7;
             color: var(--white);
@@ -1590,7 +1592,7 @@
                         setupSkillsAnimation(true);
                     },
 
-                    // Mobile (max-width 768px)
+                    // Mobile (max-width: 768px)
                     "(max-width: 768px)": function() {
                         // Enable Skills Section animation on mobile
                         setupSkillsAnimation(true);
@@ -1599,8 +1601,7 @@
                         gsap.set([
                             '.main-nav',
                             '.nav-links .nav-item',
-                            '.about-heading',
-                            '.about-description',
+                            // Removed about-heading and about-description from here to ensure they are always visible
                             '.section-title',
                             '.service-card',
                             '.my-work-grid',
