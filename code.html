@@ -311,7 +311,7 @@
             padding-bottom: 5px;
             letter-spacing: 1px;
             text-shadow: none;
-            clip-path: inset(100% 0 0 0);
+            /* Removed clip-path: inset(100% 0 0 0); */
         }
 
         .about-description {
@@ -319,7 +319,7 @@
             line-height: 1.7;
             color: var(--white);
             margin-bottom: 30px;
-            clip-path: inset(100% 0 0 0);
+            /* Removed clip-path: inset(100% 0 0 0); */
         }
 
         /* Skills Section Styles */
@@ -1541,10 +1541,10 @@
                 const aboutHeadings = document.querySelectorAll('.about-heading');
                 aboutHeadings.forEach(heading => {
                     gsap.fromTo(heading, {
-                        clipPath: 'inset(100% 0 0 0)', // Start hidden at the bottom
+                        opacity: 0, // Start hidden
                         y: 20 // Slight initial offset
                     }, {
-                        clipPath: 'inset(0% 0 0 0)', // Wipe in fully
+                        opacity: 1, // Fade in
                         y: 0,
                         duration: 1.2,
                         ease: "power4.out", // Smooth and modern ease
@@ -1560,10 +1560,10 @@
                 const aboutDescriptions = document.querySelectorAll('.about-description');
                 aboutDescriptions.forEach(description => {
                     gsap.fromTo(description, {
-                        clipPath: 'inset(100% 0 0 0)', // Start hidden at the bottom
+                        opacity: 0, // Start hidden
                         y: 20 // Slight initial offset
                     }, {
-                        clipPath: 'inset(0% 0 0 0)', // Wipe in fully
+                        opacity: 1, // Fade in
                         y: 0,
                         duration: 1.2,
                         ease: "power4.out", // Smooth and modern ease
@@ -1596,9 +1596,12 @@
 
 
                 // --- Services Section Grid Animation ---
-                gsap.from('.services-grid', {
+                gsap.fromTo('.services-grid', {
                     opacity: 0,
-                    y: 50,
+                    y: 50
+                }, {
+                    opacity: 1,
+                    y: 0,
                     duration: 1,
                     ease: 'power2.out',
                     scrollTrigger: {
