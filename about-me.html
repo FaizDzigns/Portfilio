@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Faiz Dzigns</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Garet:wght@400;700&family=Passion+One:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* General Styles */
+        :root {
+            --white: #FFFFFF;
+            --dark: #1C1E21;
+            --passion-one: 'Passion One', sans-serif;
+            --garet: 'Garet', sans-serif;
+            --nav-bg: rgba(28, 30, 33, 0.8);
+            /* Semi-transparent dark background */
+            --nav-bg-scrolled: rgba(28, 30, 33, 0.95);
+            /* More opaque on scroll */
+            --accent-color: #ADD8E6;
+            --hover-color: #ADD8E6;
+            /* Bright Orange */
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100vw;
+            /* Explicitly set to viewport width */
+            height: 100vh;
+            /* Explicitly set to viewport height */
+            scroll-behavior: smooth;
+            overflow: hidden;
+            /* Hide all overflow from the root */
+            cursor: none;
+            /* Hide the default system cursor globally */
+        }
+
+        body {
+            width: 100%;
+            /* Take full width of html */
+            height: 100%;
+            /* Take full height of html */
+            font-family: var(--garet);
+            line-height: 1.6;
+            background-color: var(--dark);
+            color: var(--white);
+            overflow-y: auto;
+            /* Allow vertical scrolling for content */
+            overflow-x: hidden;
+            /* Ensure horizontal is hidden */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+            /* Smooth color transition */
+        }
+
+        a:hover {
+            color: var(--accent-color);
+            /* Change color on hover */
+        }
+
+        /* Ensure interactive elements also hide system cursor */
+        a,
+        button,
+        .btn,
+        input[type="button"],
+        input[type="submit"] {
+            cursor: none;
+        }
+
+        /* Reusable Components */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-family: var(--garet);
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .primary-btn {
+            background-color: var(--white);
+            color: var(--dark);
+        }
+
+        .primary-btn:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Styles */
+        section {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 0;
+            position: relative;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .section-dark {
+            background-color: rgba(28, 30, 33, 0.9);
+            color: var(--white);
+        }
+
+        .section-white {
+            background-color: var(--white);
+            color: var(--dark);
+        }
+
+        .section-title {
+            font-family: var(--passion-one);
+            font-size: 4em;
+            margin-bottom: 60px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-family: var(--passion-one);
+            font-size: 8em;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+            line-height: 0.9;
+            white-space: nowrap;
+        }
+
+        .hero-title .char {
+            display: inline-block;
+            will-change: transform, opacity;
+        }
+
+        .hero-subtitle {
+            font-family: var(--garet);
+            font-size: 1.8em;
+            color: var(--white);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        /* Updated About Section Styles */
+        .about-section .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            /* Single column layout */
+            align-items: center;
+            gap: 30px;
+            width: 85%;
+            max-width: 900px; /* Added max-width for better control */
+            margin: 0 auto;
+            padding: 50px; /* Adjusted padding */
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(7.5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            text-align: left; /* Ensure text is left-aligned */
+        }
+
+        .about-content {
+            padding: 0; /* Remove internal padding, container handles it */
+        }
+
+        .about-heading {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: var(--white);
+            font-weight: bold;
+            position: relative;
+            padding-bottom: 5px;
+            letter-spacing: 1px;
+            text-shadow:
+                1px 1px 0 var(--dark),
+                -1px -1px 0 var(--dark),
+                1px -1px 0 var(--dark),
+                -1px 1px 0 var(--dark);
+        }
+
+        .about-description {
+            font-size: 1.2em;
+            line-height: 1.7;
+            color: var(--white);
+            margin-bottom: 30px;
+        }
+
+        .about-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            order: -1; /* Place image above content on single column layout */
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Style the button */
+        .about-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            font-family: var(--garet);
+            font-size: 1em;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--white);
+            border: 2px solid var(--accent-color);
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .about-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--dark);
+        }
+
+        /* My Focus Section - New */
+        .my-focus-section .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            align-items: center;
+            gap: 30px;
+            width: 85%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(7.5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+            margin-top: 50px; /* Space from previous section */
+        }
+
+        /* Skills Section - Removed */
+        /* Services Section - Removed */
+
+        /* Background Illustrations - Removed as per new layout */
+        .bg-circle,
+        .bg-square {
+            display: none; /* Hide background shapes */
+        }
+
+        /* Glowing Blob Cursor */
+        #blob-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-color);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+
+        /* Page Transition Overlay Styles */
+        .page-transition-overlay-left,
+        .page-transition-overlay-right {
+            position: fixed;
+            top: 0;
+            height: 100vh;
+            width: 50vw;
+            background-color: var(--dark);
+            z-index: 9998;
+            pointer-events: none;
+        }
+
+        .page-transition-overlay-left {
+            left: 0;
+            transform: translateX(0%);
+        }
+
+        .page-transition-overlay-right {
+            right: 0;
+            transform: translateX(0%);
+        }
+
+        /* Main content wrapper for initial hide and reveal */
+        #mainContentWrapper {
+            opacity: 0;
+            transform: translateY(20px);
+            /* Initial slight offset */
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Back Arrow Button */
+        .back-arrow-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            font-size: 2.5em;
+            color: var(--white);
+            cursor: pointer;
+            z-index: 1001;
+            transition: transform 0.3s ease, color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-arrow-btn:hover {
+            transform: translateX(-5px);
+            color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <div id="blob-cursor"></div>
+    <div class="page-transition-overlay-left" id="pageTransitionOverlayLeft"></div>
+    <div class="page-transition-overlay-right" id="pageTransitionOverlayRight"></div>
+
+    <div id="mainContentWrapper">
+        <a href="code.html" class="back-arrow-btn" id="backArrowBtn">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <section id="about-me" class="about-section section-dark">
+            <div class="container">
+                <div class="about-content">
+                    <h2 class="about-heading">More About Me</h2>
+                    <p class="about-description">
+                        I'm a passionate and driven graphic designer with over 2 years of experience helping startups, apparel brands, and e-commerce businesses create impactful visual identities. My goal is to combine creativity, strategy, and design thinking to deliver visuals that not only look good but also drive real business results.
+                    </p>
+
+                    <p class="about-description">
+                        My journey began with a deep interest in branding and a desire to bring ideas to life through visuals. Being self-taught through free online resources, I’ve developed a strong foundation in logo design, brand identity, social media content, and marketing collateral — with a growing skill in basic motion and logo animation.
+                    </p>
+
+                    <p class="about-description">
+                        I’ve had the chance to work on projects for emerging apparel brands like Aurelia and Veq, as well as a watch company named Zovet, building identities that reflect their vision and connect with their audience.
+                    </p>
+                    <p class="about-description">
+                        When I'm not designing, I'm exploring design trends, learning new tools, or experimenting with creative side projects like car posters and packaging ideas. I'm always curious, always learning — and always excited to work with brands that want to stand out.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Immediately Invoked Function Expression (IIFE) for scope isolation
+        (function () {
+            'use strict'; // Enable strict mode for better error checking
+
+            // Ensure GSAP plugins are registered once the DOM is ready
+            document.addEventListener('DOMContentLoaded', () => {
+                gsap.registerPlugin(ScrollTrigger);
+
+                // --- Glowing Blob Cursor Animation ---
+                const blobCursor = document.getElementById('blob-cursor');
+                if (blobCursor) {
+                    document.addEventListener('mousemove', (e) => {
+                        let x = e.clientX;
+                        let y = e.clientY;
+
+                        gsap.to(blobCursor, {
+                            duration: 0.3,
+                            x: x,
+                            y: y,
+                            overwrite: "auto"
+                        });
+                    });
+                } else {
+                    console.warn("Blob cursor element with ID 'blob-cursor' not found. Custom cursor animation will not work.");
+                }
+
+                // --- Page Transition Out Animation (on page load) ---
+                const pageTransitionOverlayLeft = document.getElementById('pageTransitionOverlayLeft');
+                const pageTransitionOverlayRight = document.getElementById('pageTransitionOverlayRight');
+                const mainContentWrapper = document.getElementById('mainContentWrapper');
+
+                if (pageTransitionOverlayLeft && pageTransitionOverlayRight && mainContentWrapper) {
+                    // Set initial state for overlays (fully covering)
+                    gsap.set(pageTransitionOverlayLeft, { x: '0%' });
+                    gsap.set(pageTransitionOverlayRight, { x: '0%' });
+
+                    const tl = gsap.timeline({
+                        onComplete: () => {
+                            // Re-enable interactions after animation
+                            pageTransitionOverlayLeft.style.pointerEvents = 'none';
+                            pageTransitionOverlayRight.style.pointerEvents = 'none';
+                            // Animate main content in after overlays are gone
+                            gsap.to(mainContentWrapper, {
+                                opacity: 1,
+                                translateY: 0,
+                                duration: 0.7,
+                                ease: "power3.out"
+                            });
+                        }
+                    });
+
+                    // Animate the overlays out
+                    tl.to(pageTransitionOverlayLeft, {
+                        x: '-100%', // Slide out to left
+                        duration: 0.7,
+                        ease: "power4.inOut"
+                    }, 0); // Start at the same time
+
+                    tl.to(pageTransitionOverlayRight, {
+                        x: '100%', // Slide out to right
+                        duration: 0.7,
+                        ease: "power4.inOut"
+                    }, 0); // Start at the same time
+
+                } else {
+                    console.warn("Page Transition Overlays or Main Content Wrapper not found on about-me.html. Incoming transition will not work.");
+                    // If overlays are not found, ensure content is visible
+                    if (mainContentWrapper) {
+                        mainContentWrapper.style.opacity = 1;
+                        mainContentWrapper.style.transform = 'translateY(0)';
+                    }
+                }
+
+                // --- Back Arrow Button Transition Logic ---
+                const backArrowBtn = document.getElementById('backArrowBtn');
+                if (backArrowBtn && pageTransitionOverlayLeft && pageTransitionOverlayRight) {
+                    backArrowBtn.addEventListener('click', (e) => {
+                        e.preventDefault(); // Prevent default link behavior
+
+                        const destinationUrl = backArrowBtn.href;
+
+                        // Animate the overlays in
+                        const tl = gsap.timeline({
+                            onStart: () => {
+                                // Block interactions during transition
+                                pageTransitionOverlayLeft.style.pointerEvents = 'auto';
+                                pageTransitionOverlayRight.style.pointerEvents = 'auto';
+                            },
+                            onComplete: () => {
+                                window.location.href = destinationUrl; // Navigate once animation is complete
+                            }
+                        });
+
+                        tl.to(pageTransitionOverlayLeft, {
+                            x: '0%', // Slide in from left
+                            duration: 0.7,
+                            ease: "power4.inOut"
+                        }, 0); // Start at the same time
+
+                        tl.to(pageTransitionOverlayRight, {
+                            x: '0%', // Slide in from right
+                            duration: 0.7,
+                            ease: "power4.inOut"
+                        }, 0); // Start at the same time
+                    });
+                } else {
+                    console.warn("Back Arrow button or Page Transition Overlays not found on about-me.html. Outgoing transition will not work.");
+                }
+            }); // End of DOMContentLoaded
+        })(); // End of IIFE
+    </script>
+</body>
+
+</html>

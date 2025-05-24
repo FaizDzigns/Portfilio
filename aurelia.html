@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurelia Project - Faiz Dzigns</title>
+
+    <link rel="icon" type="image/svg+xml"
+        href="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/icon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Garet:wght@400;700&family=Passion+One:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --white: #FFFFFF;
+            --dark: #1C1E21;
+            --passion-one: 'Passion One', sans-serif;
+            --garet: 'Garet', sans-serif;
+            --accent-color: #ADD8E6;
+            --hover-color: #ADD8E6;
+        }
+
+        /* Universal Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100vw;
+            height: 100vh;
+            scroll-behavior: smooth;
+            overflow: hidden;
+            cursor: none;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            font-family: var(--garet);
+            line-height: 1.6;
+            background-color: var(--dark);
+            color: var(--white);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Ensure interactive elements also hide system cursor */
+        a,
+        button,
+        input[type="button"],
+        input[type="submit"] {
+            cursor: none;
+        }
+
+        /* Reusable Button Components */
+        .primary-btn {
+            padding: 12px 25px;
+            font-size: 1em;
+            background-color: var(--white);
+            color: var(--dark);
+            border: 2px solid var(--accent-color);
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--garet);
+            font-weight: 700;
+        }
+
+        .primary-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--dark);
+        }
+
+        /* Section Base Styles */
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-family: var(--passion-one);
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .section-subtitle {
+            font-family: var(--garet);
+            font-size: 1.5em;
+            margin-bottom: 60px;
+            text-transform: capitalize;
+        }
+
+
+        /* Back Arrow Button */
+        .back-arrow-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            font-size: 2.5em;
+            color: var(--white);
+            cursor: pointer;
+            z-index: 1001;
+            transition: transform 0.3s ease, color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-arrow-btn:hover {
+            transform: translateX(-5px);
+            color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Project Content Layout (Simplified Grid) */
+        .project-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex; /* Use flex to stack sections vertically */
+            flex-direction: column;
+            gap: 40px; /* Space between sections */
+            padding-bottom: 80px;
+        }
+
+        .section-group {
+            display: grid;
+            gap: 20px; /* Space within a section */
+            border-radius: 15px; /* Overall rounded edges for the group */
+            padding: 10px; /* Internal padding for the group */
+            background-color: rgba(28, 30, 33, 0.5); /* Slightly lighter background for the group */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Specific layout for the "1 on left, 2 on right" groups */
+        .layout-one-two {
+            grid-template-columns: 2fr 1fr; /* Main image wider than stacked images */
+            align-items: start; /* Align items to the start of their grid area */
+        }
+
+        /* Specific layout for the "2 mockups" group */
+        .layout-two-col {
+            grid-template-columns: repeat(auto-fit, minmax(calc(50% - 10px), 1fr)); /* Two flexible columns */
+        }
+
+        .stacked-items-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between stacked items */
+            height: 100%; /* Ensure container takes full height of its grid cell */
+        }
+
+        .stacked-items-container .grid-item {
+            flex-grow: 1; /* Make stacked items share available height */
+            height: auto; /* Allow flexbox to control height */
+            min-height: 150px; /* Minimum height for stacked items */
+        }
+
+        .grid-item {
+            background-color: var(--dark);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 200px; /* Minimum height for all grid items */
+        }
+
+        .grid-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* IMPORTANT: Use contain to prevent distortion and ensure full image visibility */
+            display: block;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .layout-one-two, .layout-two-col {
+                grid-template-columns: 1fr; /* Stack all items in a single column */
+            }
+            .stacked-items-container {
+                flex-direction: row; /* Stack items horizontally on smaller screens */
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .stacked-items-container .grid-item {
+                width: calc(50% - 10px); /* Two items per row */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 3em;
+            }
+            .section-subtitle {
+                font-size: 1.2em;
+            }
+            .project-content {
+                gap: 15px;
+            }
+            .section-group {
+                padding: 5px;
+                gap: 10px;
+            }
+            .stacked-items-container .grid-item {
+                width: 100%; /* One item per row on very small screens */
+            }
+        }
+
+        /* Glowing Blob Cursor Styles */
+        #blob-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-color);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, filter 0.3s ease, background-color 0.2s ease;
+            filter: blur(5px);
+        }
+
+        /* Page Transition Overlay Styles */
+        .page-transition-overlay-left,
+        .page-transition-overlay-right {
+            position: fixed;
+            top: 0;
+            height: 100vh;
+            width: 50vw;
+            background-color: var(--dark);
+            z-index: 9998;
+            pointer-events: none;
+        }
+
+        .page-transition-overlay-left {
+            left: 0;
+            transform: translateX(0%);
+        }
+
+        .page-transition-overlay-right {
+            right: 0;
+            transform: translateX(0%);
+        }
+
+        /* Main content wrapper for initial hide and reveal */
+        #mainContentWrapper {
+            opacity: 1;
+            transform: translateY(0);
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--dark); /* Dark modal background */
+            padding: 20px;
+            border-radius: 15px; /* Rounded edges */
+            max-width: 90%;
+            max-height: 90%;
+            overflow: hidden; /* Ensure image doesn't overflow */
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+            transform: scale(0.8); /* Initial scale for animation */
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh; /* Limit image height to fit screen */
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px; /* Rounded image inside modal */
+            object-fit: contain; /* Ensure entire image is visible and aspect ratio maintained */
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 2.5em;
+            color: var(--white);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            padding: 5px;
+            line-height: 1;
+        }
+
+        .modal-close-btn:hover {
+            color: var(--accent-color);
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <div id="blob-cursor"></div>
+    <div class="page-transition-overlay-left" id="pageTransitionOverlayLeft"></div>
+    <div class="page-transition-overlay-right" id="pageTransitionOverlayRight"></div>
+
+    <div id="mainContentWrapper">
+        <a href="work.html" class="back-arrow-btn" id="backArrowBtn">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+
+        <section id="aurelia-project-detail">
+            <h2 class="section-title">Aurelia</h2>
+            <p class="section-subtitle">Logo Design Showcase</p>
+
+            <div class="project-content">
+                <div class="section-group layout-one-two">
+                    <div class="grid-item">
+                        <img src="Project/Aurelia/1.png" alt="Aurelia Main Logo" onerror="this.style.display='none'; console.error('Failed to load image: Project/Aurelia/1.png');">
+                    </div>
+                    <div class="stacked-items-container">
+                        <div class="grid-item">
+                            <img src="Project/Aurelia/2.png" alt="Aurelia Secondary Logo" onerror="this.style.display='none'; console.error('Failed to load image: Project/Aurelia/2.png');">
+                        </div>
+                        <div class="grid-item">
+                            <img src="Project/Aurelia/5.png" alt="Aurelia Brand Pattern" onerror="this.style.display='none'; console.error('Failed to load image: Project/Aurelia/5.png');">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-group layout-two-col">
+                    <div class="grid-item">
+                        <img src="Project/Aurelia/3.png" alt="Aurelia Business Card Mockup" onerror="this.style.display='none'; console.error('Failed to load image: Project/Aurelia/3.png');">
+                    </div>
+                    <div class="grid-item">
+                        <img src="Project/Aurelia/4.png" alt="Aurelia Hang Tag Mockup" onerror="this.style.display='none'; console.error('Failed to load image: Project/Aurelia/4.png');">
+                    </div>
+                </div>
+
+                <div class="section-group layout-one-two">
+                    <div class="grid-item">
+                        <img src="Project/Aurelia/6.png" alt="Aurelia Concept 1" onerror="this.style.display='none'; console.error('Failed to load image: Project/Aurelia/6.png');">
+                    </div>
+                    <div class="stacked-items-container">
+                        <div class="grid-item">
+                            <img src="Project/Aurelia/7.png" alt="Aurelia Concept 2" onerror="this.style.display='none'; console.error('Failed to load image: Project/Aurelia/7.png');">
+                        </div>
+                        <div class="grid-item">
+                            <img src="Project/Aurelia/8.png" alt="Aurelia Concept 3" onerror="this.style.display='none'; console.error('Failed to load image: Project/Aurelia/8.png');">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="imageModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <img id="modalImage" src="" alt="Full size image">
+        </div>
+    </div>
+
+    <script>
+        // Immediately Invoked Function Expression (IIFE) for scope isolation
+        (function () {
+            'use strict'; // Enable strict mode for better error checking
+
+            // Define CSS variables in JS for easy access
+            const cssVars = getComputedStyle(document.documentElement);
+            const darkColor = cssVars.getPropertyValue('--dark').trim();
+            const whiteColor = cssVars.getPropertyValue('--white').trim();
+            const accentColor = cssVars.getPropertyValue('--accent-color').trim();
+
+            // --- Glowing Blob Cursor Animation ---
+            const blobCursor = document.getElementById('blob-cursor');
+            if (blobCursor) {
+                document.addEventListener('mousemove', (e) => {
+                    let x = e.clientX;
+                    let y = e.clientY;
+
+                    gsap.to(blobCursor, {
+                        duration: 0.3,
+                        x: x,
+                        y: y,
+                        overwrite: "auto"
+                    });
+
+                    const elementUnderCursor = document.elementFromPoint(x, y);
+                    let targetColor = accentColor; // Default to accent for dark background
+
+                    // Check if the cursor is over a light section (if any are added later)
+                    const closestWhiteSection = elementUnderCursor.closest('.section-white');
+
+                    if (closestWhiteSection) {
+                        targetColor = darkColor; // Change to dark if over a white element
+                    }
+
+                    blobCursor.style.backgroundColor = targetColor;
+                    blobCursor.style.boxShadow = `0 0 20px ${targetColor}`;
+                });
+            } else {
+                console.warn("Blob cursor element with ID 'blob-cursor' not found. Custom cursor animation will not work.");
+            }
+
+            // --- Page Transition Out Animation (on page load) ---
+            const pageTransitionOverlayLeft = document.getElementById('pageTransitionOverlayLeft');
+            const pageTransitionOverlayRight = document.getElementById('pageTransitionOverlayRight');
+            const mainContentWrapper = document.getElementById('mainContentWrapper');
+
+            if (pageTransitionOverlayLeft && pageTransitionOverlayRight && mainContentWrapper) {
+                // Set initial state for overlays (fully covering)
+                gsap.set(pageTransitionOverlayLeft, { x: '0%' });
+                gsap.set(pageTransitionOverlayRight, { x: '0%' });
+
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        // Re-enable interactions after animation
+                        pageTransitionOverlayLeft.style.pointerEvents = 'none';
+                        pageTransitionOverlayRight.style.pointerEvents = 'none';
+                    }
+                });
+
+                // Animate the overlays out
+                tl.to(pageTransitionOverlayLeft, {
+                    x: '-100%', // Slide out to left
+                    duration: 0.7,
+                    ease: "power4.inOut"
+                }, 0); // Start at the same time
+
+                tl.to(pageTransitionOverlayRight, {
+                    x: '100%', // Slide out to right
+                    duration: 0.7,
+                    ease: "power4.inOut"
+                }, 0); // Start at the same time
+
+            } else {
+                console.warn("Page Transition Overlays or Main Content Wrapper not found on aurelia.html. Incoming transition will not work.");
+            }
+
+            // --- Back Arrow Button Transition Logic ---
+            const backArrowBtn = document.getElementById('backArrowBtn');
+            if (backArrowBtn && pageTransitionOverlayLeft && pageTransitionOverlayRight) {
+                backArrowBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default link behavior
+
+                    const destinationUrl = backArrowBtn.href;
+
+                    // Animate the overlays in
+                    const tl = gsap.timeline({
+                        onStart: () => {
+                            // Block interactions during transition
+                            pageTransitionOverlayLeft.style.pointerEvents = 'auto';
+                            pageTransitionOverlayRight.style.pointerEvents = 'auto';
+                        },
+                        onComplete: () => {
+                            window.location.href = destinationUrl; // Navigate once animation is complete
+                        }
+                    });
+
+                    tl.to(pageTransitionOverlayLeft, {
+                        x: '0%', // Slide in from left
+                        duration: 0.7,
+                        ease: "power4.inOut"
+                    }, 0); // Start at the same time
+
+                    tl.to(pageTransitionOverlayRight, {
+                        x: '0%', // Slide in from right
+                        duration: 0.7,
+                        ease: "power4.inOut"
+                    }, 0); // Start at the same time
+                });
+            } else {
+                console.warn("Back arrow button or Page Transition Overlays not found on aurelia.html. Outgoing transition will not work.");
+            }
+
+            // --- Image Modal/Popup Logic ---
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalCloseBtn = document.querySelector('.modal-close-btn');
+            const gridItems = document.querySelectorAll('.project-content .grid-item img'); // Select images within grid items
+
+            // Add click listener to each grid item image
+            gridItems.forEach(img => {
+                img.addEventListener('click', () => {
+                    modalImage.src = img.src; // Set modal image source
+                    imageModal.classList.add('active'); // Show modal
+                });
+            });
+
+            // Add click listener to close button
+            modalCloseBtn.addEventListener('click', () => {
+                imageModal.classList.remove('active'); // Hide modal
+            });
+
+            // Close modal when clicking outside the content
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal) {
+                    imageModal.classList.remove('active');
+                }
+            });
+
+        })(); // End of IIFE
+    </script>
+</body>
+
+</html>

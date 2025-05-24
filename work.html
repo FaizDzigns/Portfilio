@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Work - Faiz Dzigns</title>
+
+    <link rel="icon" type="image/svg+xml"
+        href="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/icon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Garet:wght@400;700&family=Passion+One:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --white: #FFFFFF;
+            --dark: #1C1E21;
+            --passion-one: 'Passion One', sans-serif;
+            --garet: 'Garet', sans-serif;
+            --accent-color: #ADD8E6;
+            --hover-color: #ADD8E6;
+        }
+
+        /* Universal Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100vw;
+            height: 100vh;
+            scroll-behavior: smooth;
+            overflow: hidden;
+            cursor: none;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            font-family: var(--garet);
+            line-height: 1.6;
+            background-color: var(--dark); /* Dark background */
+            color: var(--white); /* White text */
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Ensure interactive elements also hide system cursor */
+        a,
+        button,
+        input[type="button"],
+        input[type="submit"] {
+            cursor: none;
+        }
+
+        /* Reusable Button Components */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-family: var(--garet);
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .primary-btn {
+            padding: 12px 25px;
+            font-size: 1em;
+            background-color: var(--white);
+            color: var(--dark);
+            border: 2px solid var(--accent-color);
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--garet);
+            font-weight: 700;
+        }
+
+        .primary-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--dark);
+        }
+
+        /* Section Base Styles */
+        section {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 0;
+            position: relative;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .section-dark {
+            background-color: rgba(28, 30, 33, 0.9);
+            color: var(--white);
+        }
+
+        .section-white {
+            background-color: var(--white);
+            color: var(--dark);
+        }
+
+        .section-title {
+            font-family: var(--passion-one);
+            font-size: 4em;
+            margin-bottom: 60px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1;
+            padding-top: 50px; /* Adjusted padding to move content up */
+        }
+
+        /* Navigation Styles (Removed) */
+        .main-nav {
+            display: none;
+        }
+
+        /* My Work Page Specific Styles (General Project Cards) */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-bottom: 50px;
+        }
+
+        .project-card-link { /* New class for the clickable card */
+            display: block; /* Make the link a block element to wrap the card */
+            text-decoration: none; /* Remove underline from the link */
+            color: inherit; /* Inherit text color */
+        }
+
+        .project-card {
+            background-color: var(--dark);
+            color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 0 20px 0;
+            border: 2px solid var(--accent-color);
+            opacity: 1; /* Visible by default */
+            transform: translateY(0); /* No initial transform */
+            height: 650px; /* Adjusted height for better image visibility */
+        }
+
+        .project-card-link:hover .project-card { /* Apply hover to the card when link is hovered */
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 30px var(--accent-color);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 400px; /* Increased height of the image to fill the card better */
+            object-fit: cover;
+            display: block;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card-link:hover .project-card img { /* Apply hover to the image when link is hovered */
+            transform: scale(1.05);
+        }
+
+        .project-card h3 {
+            font-family: var(--passion-one);
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 1; /* Visible by default */
+            transform: translateY(0); /* No initial transform */
+        }
+
+        .project-card p {
+            font-size: 1em;
+            color: var(--white);
+            padding: 0 20px 15px;
+            opacity: 1; /* Visible by default */
+            transform: translateY(0); /* No initial transform */
+        }
+
+        .project-card .primary-btn {
+            margin-top: auto;
+            opacity: 1; /* Visible by default */
+            transform: translateY(0); /* No initial transform */
+        }
+
+        /* Back Arrow Button */
+        .back-arrow-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            font-size: 2.5em;
+            color: var(--white);
+            cursor: pointer;
+            z-index: 1001;
+            transition: transform 0.3s ease, color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-arrow-btn:hover {
+            transform: translateX(-5px);
+            color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+
+        /* Background Illustrations Styles */
+        .bg-circle,
+        .bg-square {
+            position: absolute;
+            transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+            cursor: none;
+            pointer-events: auto;
+            opacity: 0.7;
+            background-color: var(--dark);
+            z-index: -1;
+            filter: blur(5px);
+        }
+
+        .bg-circle {
+            border-radius: 50%;
+            animation: pulse 5s infinite alternate;
+        }
+
+        .bg-square {
+            animation: rotate 8s infinite linear;
+        }
+
+        .bg-circle:hover,
+        .bg-square:hover {
+            transform: scale(1.3);
+            opacity: 0.7;
+            background-color: var(--dark);
+            filter: blur(5px);
+        }
+
+        /* Keyframe Animations */
+        @keyframes pulse {
+            from {
+                transform: scale(0.8);
+            }
+
+            to {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Glowing Blob Cursor Styles */
+        #blob-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-color);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, filter 0.3s ease, background-color 0.2s ease;
+            filter: blur(5px);
+        }
+
+        /* Page Transition Overlay Styles */
+        .page-transition-overlay-left,
+        .page-transition-overlay-right {
+            position: fixed;
+            top: 0;
+            height: 100vh;
+            width: 50vw;
+            background-color: var(--dark);
+            z-index: 9998;
+            pointer-events: none;
+        }
+
+        .page-transition-overlay-left {
+            left: 0;
+            transform: translateX(0%);
+        }
+
+        .page-transition-overlay-right {
+            right: 0;
+            transform: translateX(0%);
+        }
+
+        /* Main content wrapper for initial hide and reveal */
+        #mainContentWrapper {
+            opacity: 1;
+            transform: translateY(0);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <div id="blob-cursor"></div>
+    <div class="page-transition-overlay-left" id="pageTransitionOverlayLeft"></div>
+    <div class="page-transition-overlay-right" id="pageTransitionOverlayRight"></div>
+
+    <div id="mainContentWrapper">
+        <a href="code.html" class="back-arrow-btn" id="backArrowBtn">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+
+        <section id="my-work-page" class="section-dark" style="padding-top: 50px;">
+            <h2 class="section-title">My Creative Portfolio</h2>
+            <div class="work-grid">
+                <a href="aurelia.html" class="project-card-link transition-link">
+                    <div class="project-card">
+                        <img src="Project/Aurelia/1.png" alt="Aurelia Logo">
+                        <h3>Aurelia</h3>
+                        <p>Logo Design for a Luxury Apparel Brand.</p>
+                        <span class="primary-btn">View Details</span>
+                    </div>
+                </a>
+
+                <a href="veq.html" class="project-card-link transition-link">
+                    <div class="project-card">
+                        <img src="Project/Veq/1.png" alt="VEQ Logo">
+                        <h3>VEQ</h3>
+                        <p>Logo Design for a Sneaker Brand.</p>
+                        <span class="primary-btn">View Details</span>
+                    </div>
+                </a>
+
+                <a href="zovet.html" class="project-card-link transition-link">
+                    <div class="project-card">
+                        <img src="Project/Zovet/1.png" alt="Zovet Logo">
+                        <h3>ZOVET</h3>
+                        <p>Brand Identity Design for a Luxury Watch Company.</p>
+                        <span class="primary-btn">View Details</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Immediately Invoked Function Expression (IIFE) for scope isolation
+        (function () {
+            'use strict'; // Enable strict mode for better error checking
+
+            // Define CSS variables in JS for easy access
+            const cssVars = getComputedStyle(document.documentElement);
+            const darkColor = cssVars.getPropertyValue('--dark').trim();
+            const whiteColor = cssVars.getPropertyValue('--white').trim();
+            const accentColor = cssVars.getPropertyValue('--accent-color').trim();
+
+            // --- Glowing Blob Cursor Animation ---
+            const blobCursor = document.getElementById('blob-cursor');
+            if (blobCursor) {
+                document.addEventListener('mousemove', (e) => {
+                    let x = e.clientX;
+                    let y = e.clientY;
+
+                    gsap.to(blobCursor, {
+                        duration: 0.3,
+                        x: x,
+                        y: y,
+                        overwrite: "auto"
+                    });
+
+                    const elementUnderCursor = document.elementFromPoint(x, y);
+                    let targetColor = accentColor; // Default to accent for dark background
+
+                    // Check if the cursor is over a light section (if any are added later)
+                    const closestWhiteSection = elementUnderCursor.closest('.section-white');
+
+                    if (closestWhiteSection) {
+                        targetColor = darkColor; // Change to dark if over a white element
+                    }
+
+                    blobCursor.style.backgroundColor = targetColor;
+                    blobCursor.style.boxShadow = `0 0 20px ${targetColor}`;
+                });
+            } else {
+                console.warn("Blob cursor element with ID 'blob-cursor' not found. Custom cursor animation will not work.");
+            }
+
+            // --- Page Transition Out Animation (on page load) ---
+            const pageTransitionOverlayLeft = document.getElementById('pageTransitionOverlayLeft');
+            const pageTransitionOverlayRight = document.getElementById('pageTransitionOverlayRight');
+            const mainContentWrapper = document.getElementById('mainContentWrapper');
+
+            if (pageTransitionOverlayLeft && pageTransitionOverlayRight && mainContentWrapper) {
+                // Set initial state for overlays (fully covering)
+                gsap.set(pageTransitionOverlayLeft, { x: '0%' });
+                gsap.set(pageTransitionOverlayRight, { x: '0%' });
+
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        // Re-enable interactions after animation
+                        pageTransitionOverlayLeft.style.pointerEvents = 'none';
+                        pageTransitionOverlayRight.style.pointerEvents = 'none';
+                    }
+                });
+
+                tl.to(pageTransitionOverlayLeft, {
+                    x: '-100%', // Slide out to left
+                    duration: 0.7,
+                    ease: "power4.inOut"
+                }, 0); // Start at the same time
+
+                tl.to(pageTransitionOverlayRight, {
+                    x: '100%', // Slide out to right
+                    duration: 0.7,
+                    ease: "power4.inOut"
+                }, 0); // Start at the same time
+
+            } else {
+                console.warn("Page Transition Overlays or Main Content Wrapper not found on work.html. Incoming transition will not work.");
+            }
+
+            // --- Unified Page Transition Logic for all relevant links ---
+            // Select both the back arrow button and any element with 'transition-link' class
+            const transitionLinks = document.querySelectorAll('#backArrowBtn, .transition-link');
+
+            transitionLinks.forEach(link => {
+                if (link && pageTransitionOverlayLeft && pageTransitionOverlayRight) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault(); // Prevent default link behavior
+
+                        const destinationUrl = link.href;
+
+                        // Animate the overlays in
+                        const tl = gsap.timeline({
+                            onStart: () => {
+                                // Block interactions during transition
+                                pageTransitionOverlayLeft.style.pointerEvents = 'auto';
+                                pageTransitionOverlayRight.style.pointerEvents = 'auto';
+                            },
+                            onComplete: () => {
+                                window.location.href = destinationUrl; // Navigate once animation is complete
+                            }
+                        });
+
+                        tl.to(pageTransitionOverlayLeft, {
+                            x: '0%', // Slide in from left
+                            duration: 0.7,
+                            ease: "power4.inOut"
+                        }, 0); // Start at the same time
+
+                        tl.to(pageTransitionOverlayRight, {
+                            x: '0%', // Slide in from right
+                            duration: 0.7,
+                            ease: "power4.inOut"
+                        }, 0); // Start at the same time
+                    });
+                } else {
+                    console.warn("One or more transition links or Page Transition Overlays not found. Outgoing transition will not work for some links.");
+                }
+            });
+
+        })(); // End of IIFE
+    </script>
+</body>
+
+</html>

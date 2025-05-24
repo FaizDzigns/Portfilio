@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOVET - Faiz Dzigns</title>
+
+    <link rel="icon" type="image/svg+xml"
+        href="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/icon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Garet:wght@400;700&family=Passion+One:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --white: #FFFFFF;
+            --dark: #1C1E21;
+            --passion-one: 'Passion One', sans-serif;
+            --garet: 'Garet', sans-serif;
+            --accent-color: #ADD8E6;
+            --hover-color: #ADD8E6;
+        }
+
+        /* Universal Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100vw;
+            height: 100vh;
+            scroll-behavior: smooth;
+            overflow: hidden;
+            cursor: none;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            font-family: var(--garet);
+            line-height: 1.6;
+            background-color: var(--dark);
+            color: var(--white);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Ensure interactive elements also hide system cursor */
+        a,
+        button,
+        input[type="button"],
+        input[type="submit"] {
+            cursor: none;
+        }
+
+        /* Reusable Button Components */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-family: var(--garet);
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .primary-btn {
+            padding: 12px 25px;
+            font-size: 1em;
+            background-color: var(--white);
+            color: var(--dark);
+            border: 2px solid var(--accent-color);
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--garet);
+            font-weight: 700;
+        }
+
+        .primary-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--dark);
+        }
+
+        /* Section Base Styles */
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-family: var(--passion-one);
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .section-subtitle {
+            font-family: var(--garet);
+            font-size: 1.5em;
+            margin-bottom: 60px;
+            text-transform: capitalize;
+        }
+
+
+        /* Back Arrow Button */
+        .back-arrow-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            font-size: 2.5em;
+            color: var(--white);
+            cursor: pointer;
+            z-index: 1001;
+            transition: transform 0.3s ease, color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-arrow-btn:hover {
+            transform: translateX(-5px);
+            color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Project Content Layout (Simplified Grid) */
+        .project-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex; /* Use flex to stack sections vertically */
+            flex-direction: column;
+            gap: 40px; /* Space between sections */
+            padding-bottom: 80px;
+        }
+
+        .section-group {
+            display: grid;
+            gap: 20px; /* Space within a section */
+            border-radius: 15px; /* Overall rounded edges for the group */
+            padding: 10px; /* Internal padding for the group */
+            background-color: rgba(28, 30, 33, 0.5); /* Slightly lighter background for the group */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Specific layout for the "1 on left, 2 on right" groups */
+        .layout-one-two {
+            grid-template-columns: 2fr 1fr; /* Main image wider than stacked images */
+            align-items: start; /* Align items to the start of their grid area */
+        }
+
+        /* Specific layout for the "2 mockups" group */
+        .layout-two-col {
+            grid-template-columns: repeat(auto-fit, minmax(calc(50% - 10px), 1fr)); /* Two flexible columns */
+        }
+
+        /* Specific layout for a single image in a row */
+        .layout-single-col {
+            grid-template-columns: 1fr; /* Single column */
+        }
+
+        .stacked-items-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between stacked items */
+            height: 100%; /* Ensure container takes full height of its grid cell */
+        }
+
+        .stacked-items-container .grid-item {
+            flex-grow: 1; /* Make stacked items share available height */
+            height: auto; /* Allow flexbox to control height */
+            min-height: 150px; /* Minimum height for stacked items */
+        }
+
+        .grid-item {
+            background-color: var(--dark);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 300px; /* Increased minimum height for all grid items */
+        }
+
+        .grid-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* IMPORTANT: Use contain to prevent distortion and ensure full image visibility */
+            display: block;
+        }
+
+        /* Specific styling for the text-based images that need to fill their container */
+        .grid-item.text-image-card img {
+            object-fit: cover; /* Use cover to fill the area, cropping if aspect ratio differs */
+            height: 100%; /* Ensure it takes full height of its container */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .layout-one-two, .layout-two-col, .layout-single-col {
+                grid-template-columns: 1fr; /* Stack all items in a single column */
+            }
+            .stacked-items-container {
+                flex-direction: row; /* Stack items horizontally on smaller screens */
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .stacked-items-container .grid-item {
+                width: calc(50% - 10px); /* Two items per row */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 3em;
+            }
+            .section-subtitle {
+                font-size: 1.2em;
+            }
+            .project-content {
+                gap: 15px;
+            }
+            .section-group {
+                padding: 5px;
+                gap: 10px;
+            }
+            .stacked-items-container .grid-item {
+                width: 100%; /* One item per row on very small screens */
+            }
+        }
+
+        /* Glowing Blob Cursor Styles */
+        #blob-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-color);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, filter 0.3s ease, background-color 0.2s ease;
+            filter: blur(5px);
+        }
+
+        /* Page Transition Overlay Styles */
+        .page-transition-overlay-left,
+        .page-transition-overlay-right {
+            position: fixed;
+            top: 0;
+            height: 100vh;
+            width: 50vw;
+            background-color: var(--dark);
+            z-index: 9998;
+            pointer-events: none;
+        }
+
+        .page-transition-overlay-left {
+            left: 0;
+            transform: translateX(0%);
+        }
+
+        .page-transition-overlay-right {
+            right: 0;
+            transform: translateX(0%);
+        }
+
+        /* Main content wrapper for initial hide and reveal */
+        #mainContentWrapper {
+            opacity: 1;
+            transform: translateY(0);
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Modal Styles */
+        .image-modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top */
+            padding-top: 50px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+            backdrop-filter: blur(10px); /* Blur effect */
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s forwards;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 900px;
+            max-height: 90%;
+            object-fit: contain; /* Ensure image fits without cropping */
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+            animation: zoomIn 0.3s forwards;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: var(--white);
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: var(--accent-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Modal Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <div id="blob-cursor"></div>
+    <div class="page-transition-overlay-left" id="pageTransitionOverlayLeft"></div>
+    <div class="page-transition-overlay-right" id="pageTransitionOverlayRight"></div>
+
+    <div id="mainContentWrapper">
+        <a href="work.html" class="back-arrow-btn" id="backArrowBtn">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+
+        <section id="project-detail" class="section-dark project-detail-section">
+            <h1 class="section-title">ZOVET</h1>
+            <p class="section-subtitle">Brand Identity Design for a Luxury Watch Company.</p>
+
+            <div class="project-content">
+                <div class="section-group layout-one-two">
+                    <div class="grid-item" data-src="Project/Zovet/1.png">
+                        <img src="Project/Zovet/1.png" alt="ZOVET Logo" onerror="this.style.display='none'; console.error('Failed to load image: Project/Zovet/1.png');">
+                    </div>
+                    <div class="stacked-items-container">
+                        <div class="grid-item" data-src="Project/Zovet/2.png">
+                            <img src="Project/Zovet/2.png" alt="ZOVET Icon" onerror="this.style.display='none'; console.error('Failed to load image: Project/Zovet/2.png');">
+                        </div>
+                        <div class="grid-item text-image-card" data-src="Project/Zovet/4.png">
+                            <img src="Project/Zovet/4.png" alt="ZOVET Watch in Box" onerror="this.style.display='none'; console.error('Failed to load image: Project/Zovet/4.png');">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-group layout-two-col">
+                    <div class="grid-item" data-src="Project/Zovet/5.png">
+                        <img src="Project/Zovet/5.png" alt="ZOVET Watch Closeup" onerror="this.style.display='none'; console.error('Failed to load image: Project/Zovet/5.png');">
+                    </div>
+                    <div class="grid-item text-image-card" data-src="Project/Zovet/3.png">
+                        <img src="Project/Zovet/3.png" alt="ZOVET Color Palette" onerror="this.style.display='none'; console.error('Failed to load image: Project/Zovet/3.png');">
+                    </div>
+                </div>
+
+                <div class="section-group layout-single-col">
+                    <div class="grid-item" data-src="Project/Zovet/6.png">
+                        <img src="Project/Zovet/6.png" alt="ZOVET Brand Identity Elements" onerror="this.style.display='none'; console.error('Failed to load image: Project/Zovet/6.png');">
+                    </div>
+                </div>
+
+                <div class="section-group layout-two-col">
+                    <div class="grid-item text-image-card" data-src="Project/Zovet/7.png">
+                        <img src="Project/Zovet/7.png" alt="About the Brand" onerror="this.style.display='none'; console.error('Failed to load image: Project/Zovet/7.png');">
+                    </div>
+                    <div class="grid-item text-image-card" data-src="Project/Zovet/8.png">
+                        <img src="Project/Zovet/8.png" alt="What they wanted" onerror="this.style.display='none'; console.error('Failed to load image: Project/Zovet/8.png');">
+                    </div>
+                </div>
+
+                <div class="section-group layout-single-col">
+                    <div class="grid-item text-image-card" data-src="Project/Zovet/9.png">
+                        <img src="Project/Zovet/9.png" alt="What I delivered" onerror="this.style.display='none'; console.error('Failed to load image: Project/Zovet/9.png');">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="imageModal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Immediately Invoked Function Expression (IIFE) for scope isolation
+        (function () {
+            'use strict'; // Enable strict mode for better error checking
+
+            // Define CSS variables in JS for easy access
+            const cssVars = getComputedStyle(document.documentElement);
+            const darkColor = cssVars.getPropertyValue('--dark').trim();
+            const accentColor = cssVars.getPropertyValue('--accent-color').trim();
+
+            // --- Glowing Blob Cursor Animation ---
+            const blobCursor = document.getElementById('blob-cursor');
+            if (blobCursor) {
+                document.addEventListener('mousemove', (e) => {
+                    let x = e.clientX;
+                    let y = e.clientY;
+
+                    gsap.to(blobCursor, {
+                        duration: 0.3,
+                        x: x,
+                        y: y,
+                        overwrite: "auto"
+                    });
+                });
+            } else {
+                console.warn("Blob cursor element with ID 'blob-cursor' not found. Custom cursor animation will not work.");
+            }
+
+            // --- Page Transition Out Animation (on page load) ---
+            const pageTransitionOverlayLeft = document.getElementById('pageTransitionOverlayLeft');
+            const pageTransitionOverlayRight = document.getElementById('pageTransitionOverlayRight');
+            const mainContentWrapper = document.getElementById('mainContentWrapper');
+
+            if (pageTransitionOverlayLeft && pageTransitionOverlayRight && mainContentWrapper) {
+                gsap.set(pageTransitionOverlayLeft, { x: '0%' });
+                gsap.set(pageTransitionOverlayRight, { x: '0%' });
+
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        pageTransitionOverlayLeft.style.pointerEvents = 'none';
+                        pageTransitionOverlayRight.style.pointerEvents = 'none';
+                    }
+                });
+
+                tl.to(pageTransitionOverlayLeft, {
+                    x: '-100%',
+                    duration: 0.7,
+                    ease: "power4.inOut"
+                }, 0);
+
+                tl.to(pageTransitionOverlayRight, {
+                    x: '100%',
+                    duration: 0.7,
+                    ease: "power4.inOut"
+                }, 0);
+
+            } else {
+                console.warn("Page Transition Overlays or Main Content Wrapper not found on zovet.html. Incoming transition will not work.");
+            }
+
+            // --- Back Arrow Button Transition Logic ---
+            const backArrowBtn = document.getElementById('backArrowBtn');
+            if (backArrowBtn && pageTransitionOverlayLeft && pageTransitionOverlayRight) {
+                backArrowBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const destinationUrl = backArrowBtn.href;
+
+                    const tl = gsap.timeline({
+                        onStart: () => {
+                            pageTransitionOverlayLeft.style.pointerEvents = 'auto';
+                            pageTransitionOverlayRight.style.pointerEvents = 'auto';
+                        },
+                        onComplete: () => {
+                            window.location.href = destinationUrl;
+                        }
+                    });
+
+                    tl.to(pageTransitionOverlayLeft, {
+                        x: '0%',
+                        duration: 0.7,
+                        ease: "power4.inOut"
+                    }, 0);
+
+                    tl.to(pageTransitionOverlayRight, {
+                        x: '0%',
+                        duration: 0.7,
+                        ease: "power4.inOut"
+                    }, 0);
+                });
+            } else {
+                console.warn("Back Arrow button or Page Transition Overlays not found on zovet.html. Outgoing transition will not work.");
+            }
+
+            // --- Image Modal Functionality ---
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            const span = document.getElementsByClassName("close-modal")[0];
+
+            document.querySelectorAll('.grid-item').forEach(item => { // Select all grid items
+                item.addEventListener('click', function() {
+                    // Only open modal if the clicked item contains an image
+                    const imgElement = this.querySelector('img');
+                    if (imgElement && imgElement.src) {
+                        modal.style.display = "flex"; // Use flex to center content
+                        modalImg.src = imgElement.src;
+                        // Prevent body scrolling when modal is open
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            // When the user clicks on <span> (x), close the modal
+            if (span) {
+                span.onclick = function() {
+                    modal.style.display = "none";
+                    document.body.style.overflow = 'auto'; // Re-enable scrolling
+                }
+            }
+
+            // When the user clicks anywhere outside of the image, close it
+            if (modal) {
+                modal.addEventListener('click', function(event) {
+                    if (event.target === modal) {
+                        modal.style.display = "none";
+                        document.body.style.overflow = 'auto'; // Re-enable scrolling
+                    }
+                });
+            }
+        })(); // End of IIFE
+    </script>
+</body>
+
+</html>

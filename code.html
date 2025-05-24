@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faiz Dzigns | Graphic Designer Portfolio</title>
+
+    <link rel="icon" type="image/svg+xml"
+        href="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/icon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Garet:wght@400;700&family=Passion+One:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==\"\
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --white: #FFFFFF;
+            /* Reverted to FFFFFF */
+            --dark: #1C1E21;
+            --passion-one: 'Passion One', sans-serif;
+            --garet: 'Garet', sans-serif;
+            --accent-color: #ADD8E6;
+            --hover-color: #ADD8E6;
+        }
+
+        /* Universal Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100vw;
+            /* Explicitly set to viewport width */
+            height: 100vh;
+            /* Explicitly set to viewport height */
+            scroll-behavior: smooth;
+            overflow: hidden;
+            /* Hide all overflow from the root */
+            cursor: none;
+            /* Hide the default system cursor globally */
+        }
+
+        body {
+            width: 100%;
+            /* Take full width of html */
+            height: 100%;
+            /* Take full height of html */
+            font-family: var(--garet);
+            line-height: 1.6;
+            background-color: var(--white);
+            /* Reverted to FFFFFF */
+            color: var(--dark);
+            /* Permanently dark text */
+            overflow-y: auto;
+            /* Allow vertical scrolling for content */
+            overflow-x: hidden;
+            /* Ensure horizontal is hidden */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+            /* Smooth color transition */
+        }
+
+        a:hover {
+            color: var(--accent-color);
+            /* Change color on hover */
+        }
+
+        /* Ensure interactive elements also hide system cursor */
+        a,
+        button,
+        .btn,
+        input[type="button"],
+        input[type="submit"] {
+            cursor: none;
+        }
+
+        /* Reusable Button Components */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-family: var(--garet);
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Styles for .about-btn (Learn More About Me) */
+        .about-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            font-family: var(--garet);
+            font-size: 1em;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--white);
+            /* Changed to white for dark container */
+            border: 2px solid var(--white);
+            /* Changed to white border for dark container */
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            /* Added border-color transition */
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .about-btn:hover {
+            background-color: var(--white);
+            /* Changed to white on hover */
+            color: var(--dark);
+            /* Changed to dark on hover */
+            border-color: var(--accent-color);
+            /* Changed to blue border on hover */
+        }
+
+        /* Modified .primary-btn (View All Work) to match .about-btn */
+        .primary-btn {
+            padding: 12px 25px;
+            /* Matched .about-btn padding */
+            font-size: 1em;
+            /* Matched .about-btn font-size */
+            background-color: var(--dark);
+            color: var(--white);
+            border: 2px solid var(--accent-color);
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            /* Simplified transition */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--garet);
+            /* Explicitly set font-family for primary-btn */
+            font-weight: 700;
+            /* Explicitly set font-weight for primary-btn */
+        }
+
+        .primary-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--dark);
+        }
+
+        /* Section Base Styles */
+        section {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 0;
+            position: relative;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .section-dark {
+            background-color: rgba(28, 30, 33, 0.9);
+            color: var(--white);
+        }
+
+        .section-white {
+            background-color: var(--white);
+            /* Reverted to FFFFFF */
+            color: var(--dark);
+        }
+
+        .section-title {
+            font-family: var(--passion-one);
+            font-size: 4em;
+            margin-bottom: 60px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        /* Navigation Styles */
+        .main-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background-color: var(--dark);
+            /* Changed to black */
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            /* White border for black nav */
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            /* Darker shadow for black nav */
+        }
+
+        .nav-logo {
+            position: relative;
+            top: 5px;
+        }
+
+        .nav-logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links .nav-item {
+            font-family: var(--garet);
+            font-size: 1.1em;
+            margin-left: 30px;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+            color: var(--white);
+            /* Nav content color changed to white */
+        }
+
+        .nav-links .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--white);
+            /* Underline color changed to white */
+            transition: width 0.3s ease;
+        }
+
+        .nav-links .nav-item:hover::after,
+        .nav-links .nav-item.active::after {
+            width: 100%;
+        }
+
+        .nav-links .nav-item:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section Styles */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-family: var(--passion-one);
+            font-size: 8em;
+            color: var(--dark);
+            /* Permanently dark */
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+            line-height: 0.9;
+            white-space: nowrap;
+        }
+
+        .hero-title .char {
+            display: inline-block;
+            will-change: transform, opacity, text-shadow, color, filter;
+            text-shadow: none;
+            transition: color 0.2s ease, text-shadow 0.2s ease, filter 0.2s ease;
+            filter: blur(0px);
+        }
+
+        .hero-subtitle {
+            font-family: var(--garet);
+            font-size: 1.8em;
+            color: var(--dark);
+            /* Permanently dark */
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        /* About Section Styles */
+        .about-section .container,
+        .about-section#focus .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 30px;
+            width: 85%;
+            margin: 0 auto;
+            padding: 80px;
+            border-radius: 15px;
+            background-color: var(--dark);
+            /* Changed to var(--dark) */
+            /* Removed backdrop-filter, border, and box-shadow for solid dark color */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Specific grid layout for "My Focus" Section */
+        .about-section#focus .container {
+            grid-template-columns: 1fr;
+        }
+
+        .about-content {
+            padding: 20px;
+        }
+
+        .about-heading {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: var(--white);
+            /* Changed to white for dark container */
+            font-weight: bold;
+            position: relative;
+            padding-bottom: 5px;
+            letter-spacing: 1px;
+            text-shadow: none;
+            /* Ensure initial state for animation */
+            clip-path: inset(100% 0 0 0);
+        }
+
+        .about-description {
+            font-size: 1.2em;
+            line-height: 1.7;
+            color: var(--white);
+            /* Changed to white for dark container */
+            margin-bottom: 30px;
+            /* Ensure initial state for animation */
+            clip-path: inset(100% 0 0 0);
+        }
+
+        /* Skills Section Styles */
+        #skills {
+            background-color: var(--dark);
+            color: var(--white);
+            text-align: center;
+            border-top-left-radius: 20px;
+            /* Reduced rounded top-left corner */
+            border-top-right-radius: 20px;
+            /* Reduced rounded top-right corner */
+            margin-top: -20px;
+            /* Reduced negative margin to overlap less */
+            position: relative;
+            /* Ensure z-index works */
+            z-index: 1;
+            /* Bring to front of previous section */
+        }
+
+        #skills .section-title {
+            padding-top: 50px;
+            /* Added padding to the top of the skills heading */
+        }
+
+        .skills-container {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .skills-track {
+            display: flex;
+            width: calc((300px + 20px) * 12);
+            will-change: transform;
+        }
+
+        .skill-card {
+            background-color: var(--dark);
+            color: var(--white);
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex-shrink: 0;
+            font-size: 1.3em;
+            text-align: center;
+        }
+
+        .skill-card img {
+            height: 100px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--accent-color);
+            filter: drop-shadow(0 0 10px var(--accent-color));
+        }
+
+        /* Services Section Styles */
+        .services-section {
+            background-color: var(--dark);
+            color: var(--white);
+        }
+
+        .services-section .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .services-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            background-color: var(--dark);
+            color: var(--white);
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        .service-icon {
+            font-size: 4em;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotate(30deg);
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+            color: var(--white);
+            transition: color 0.3s ease;
+            text-align: center;
+            /* Added for centering */
+        }
+
+        .service-card:hover h3 {
+            color: var(--accent-color);
+        }
+
+        .service-card p {
+            font-size: 1em;
+            color: var(--white);
+        }
+
+        /* My Work Section Styles */
+        .my-work-section {
+            background-color: var(--white);
+            /* Reverted to FFFFFF */
+            color: var(--dark);
+            text-align: center;
+            /* Optional: Add a top border-radius if it follows a dark section */
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            margin-top: -20px;
+            /* Adjust this if it overlaps too much or too little */
+            position: relative;
+            z-index: 0;
+            /* Ensure it sits below the skills section but above previous */
+        }
+
+        .my-work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Responsive grid */
+            gap: 40px;
+            /* Increased gap for more breathing room */
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-bottom: 50px;
+            /* Added space below the grid for the new button */
+        }
+
+        .project-card {
+            background-color: var(--dark);
+            color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            /* Stronger shadow for depth */
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 0 20px 0;
+            /* Adjust padding to move button closer to bottom */
+            border: 2px solid var(--accent-color);
+            height: 480px;
+            /* Adjusted height for better content fit */
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            /* Lift and slightly enlarge */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 30px var(--accent-color);
+            /* Accent glow */
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 260px;
+            /* Adjusted height for better content fit */
+            object-fit: cover;
+            /* Ensures images cover the area without distortion */
+            display: block;
+            margin-bottom: 15px;
+            /* Space between image and title */
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+            /* Slightly zoom image on hover */
+        }
+
+        .project-card h3 {
+            font-family: var(--passion-one);
+            font-size: 2em;
+            margin-bottom: 15px;
+            /* Space between title and button */
+            color: var(--white);
+            /* Changed to white */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-card p {
+            font-size: 1em;
+            color: var(--white);
+            padding: 0 20px 20px;
+            /* Doubled padding-bottom to 20px */
+            height: 90px;
+            /* Fixed height for the paragraph to prevent clipping */
+            overflow: hidden;
+            /* Hide overflowing text */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            /* Limit text to 3 lines */
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            /* Add ellipsis for overflowing text */
+            line-height: 1.5em;
+            /* Adjusted line-height for better spacing */
+        }
+
+        .project-card .primary-btn {
+            margin-top: auto;
+            /* Pushes the button to the bottom */
+        }
+
+        /* New styles for the View All Work button */
+        .view-all-work-btn-container {
+            text-align: center;
+            margin-top: 40px;
+            /* Space above the button */
+        }
+
+        .view-all-work-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-family: var(--garet);
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-color);
+            background-color: var(--dark);
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .view-all-work-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--dark);
+            box-shadow: 0 0 20px var(--accent-color);
+            /* Added glow on hover */
+        }
+
+
+        /* Background Illustrations Styles */
+        .bg-circle,
+        .bg-square {
+            position: absolute;
+            transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+            /* Added box-shadow to transition */
+            cursor: none;
+            pointer-events: auto;
+            opacity: 0.7;
+            background-color: var(--dark);
+            /* Default dark for light sections */
+            z-index: 2;
+            /* Changed z-index to 2 */
+            filter: blur(5px);
+        }
+
+        /* New style for light background shapes on dark sections */
+        .bg-shape-light {
+            background-color: var(--white);
+            /* White for dark sections */
+            opacity: 0.2;
+            /* More subtle */
+            filter: blur(10px);
+            /* More blur */
+        }
+
+        .bg-circle {
+            border-radius: 50%;
+            animation: pulse 5s infinite alternate;
+        }
+
+        .bg-square {
+            animation: rotate 8s infinite linear;
+        }
+
+        .bg-circle:hover,
+        .bg-square:hover {
+            transform: scale(1.3);
+            opacity: 0.7;
+            background-color: var(--dark);
+            /* Default dark for light sections */
+            filter: blur(5px);
+            box-shadow: 0 0 25px var(--accent-color);
+            /* Added box-shadow on hover */
+        }
+
+        /* Specific hover for light shapes */
+        .bg-shape-light:hover {
+            background-color: var(--accent-color);
+            /* Accent color on hover for light shapes */
+            opacity: 0.5;
+            box-shadow: 0 0 25px var(--accent-color);
+        }
+
+        /* Keyframe Animations */
+        @keyframes pulse {
+            from {
+                transform: scale(0.8);
+            }
+
+            to {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Glowing Blob Cursor Styles */
+        #blob-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-color);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, filter 0.3s ease, background-color 0.2s ease;
+            filter: blur(5px);
+        }
+
+        /* Page Transition Overlay Styles */
+        .page-transition-overlay-left,
+        .page-transition-overlay-right {
+            position: fixed;
+            top: 0;
+            height: 100vh;
+            width: 50vw;
+            background-color: var(--dark);
+            z-index: 9998;
+            pointer-events: none;
+        }
+
+        .page-transition-overlay-left {
+            left: 0;
+            transform: translateX(-100%);
+        }
+
+        .page-transition-overlay-right {
+            right: 0;
+            transform: translateX(100%);
+        }
+
+        /* Main content wrapper for initial hide and reveal */
+        #mainContentWrapper {
+            opacity: 0;
+            transform: translateY(20px);
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-content h3 {
+            font-family: var(--passion-one);
+            font-size: 2.5em;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .modal-content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: var(--white);
+            margin-bottom: 30px;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: var(--white);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            padding: 5px;
+        }
+
+        .modal-close-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .loading-indicator {
+            display: none;
+            /* Hidden by default */
+            margin-top: 20px;
+            color: var(--accent-color);
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        /* CTA Section Styles */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark) 0%, #3a3f44 100%);
+            /* Unique gradient background */
+            color: var(--white);
+            text-align: center;
+            padding: 120px 0;
+            /* More padding for prominence */
+            position: relative;
+            overflow: hidden;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            margin-top: -20px;
+            /* Overlap with previous section */
+            z-index: 1;
+            /* Ensure it's above the previous section */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            z-index: 3;
+            /* Ensure content is above Lottie and shapes */
+            position: relative;
+        }
+
+        .cta-title {
+            font-family: var(--passion-one);
+            font-size: 4.5em;
+            /* Larger title */
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            color: var(--accent-color);
+            /* Accent color for title */
+            white-space: normal; /* Allow wrapping */
+        }
+
+        /* Removed styles for individual characters in CTA title */
+        /* .cta-title .char {
+            display: inline-block;
+            will-change: transform, color, text-shadow, filter;
+            transition: color 0.2s ease, text-shadow 0.2s ease, filter 0.2s ease;
+            text-shadow: none;
+            filter: blur(0px);
+        } */
+
+        /* Removed style for word spans to ensure proper wrapping */
+        /* .cta-title .word-span {
+            display: inline-block;
+            margin-right: 0.2em;
+        } */
+
+        .cta-description {
+            font-family: var(--garet);
+            font-size: 1.4em;
+            /* Larger description */
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: var(--white);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 18px 40px;
+            /* Larger button */
+            border-radius: 8px;
+            /* More rounded */
+            font-family: var(--garet);
+            font-size: 1.3em;
+            /* Larger font */
+            font-weight: 700;
+            transition: all 0.4s ease;
+            border: 2px solid var(--accent-color);
+            background-color: var(--accent-color);
+            /* Solid accent background */
+            color: var(--dark);
+            /* Dark text on accent background */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            /* Initial shadow */
+        }
+
+        .cta-btn:hover {
+            background-color: var(--dark);
+            /* Dark background on hover */
+            color: var(--accent-color);
+            /* Accent text on hover */
+            border-color: var(--white);
+            /* White border on hover */
+            transform: translateY(-5px) scale(1.05);
+            /* Lift and scale */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 30px var(--white);
+            /* Stronger glow */
+        }
+
+        /* Styles for the embedded SVG background */
+        .cta-svg-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            /* Behind CTA content */
+            opacity: 0.1;
+            /* Subtle */
+            filter: blur(5px);
+            /* Soft blur */
+            pointer-events: none;
+            /* Ensure it doesn't block interactions */
+        }
+
+        .cta-svg-background svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            /* Ensures the SVG covers the area */
+            transform: scale(1.5);
+            /* Zoom in slightly to fill better */
+            animation: svgPan 40s linear infinite alternate;
+            /* Gentle pan animation */
+        }
+
+        /* Keyframe for SVG pan animation */
+        @keyframes svgPan {
+            0% {
+                transform: scale(1.5) translate(0%, 0%);
+            }
+
+            100% {
+                transform: scale(1.5) translate(-5%, -5%);
+            }
+        }
+
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .cta-title {
+                font-size: 2.8em; /* Slightly smaller */
+                letter-spacing: 2px; /* Slightly less space */
+            }
+
+            .cta-description {
+                font-size: 1.1em;
+            }
+
+            .cta-btn {
+                padding: 15px 30px;
+                font-size: 1em;
+            }
+
+            .cta-lottie lottie-player {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-title {
+                font-size: 2.2em; /* Even smaller */
+                letter-spacing: 1px; /* Even less space */
+                line-height: 1.2; /* Slightly more line height for better readability on small screens */
+            }
+
+            .cta-description {
+                font-size: 1em;
+            }
+
+            .cta-btn {
+                padding: 12px 25px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Footer Styles */
+        .footer-section {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            margin-top: -20px; /* Overlap with previous section */
+            position: relative;
+            z-index: 1; /* Ensure it's above the previous section */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo {
+            /* Removed margin-bottom here as it's handled by flex/grid gap */
+        }
+
+        .footer-logo img {
+            height: 60px; /* Slightly larger logo */
+            transform: scale(1.2); /* Scale the logo */
+        }
+
+        .footer-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* Three equal columns for left, center, right */
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin-top: 30px; /* Space between logo and bottom content */
+            gap: 20px; /* Gap between grid columns */
+        }
+
+        .footer-left {
+            display: flex;
+            justify-content: flex-start; /* Align logo to the start (left) */
+            align-items: center;
+        }
+
+        .footer-center {
+            display: flex;
+            flex-direction: column; /* Stack text vertically */
+            justify-content: center;
+            align-items: center; /* Center text horizontally */
+            text-align: center;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column; /* Stack social links vertically */
+            justify-content: center; /* Center social links vertically */
+            align-items: flex-end; /* Align social links to the end (right) */
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column; /* Stack the social links vertically */
+            gap: 5px; /* Reduced space between the stacked social links */
+        }
+
+        .social-link {
+            font-size: 2.2em;
+            color: var(--white);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .footer-text {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 5px; /* Space between lines */
+            line-height: 1.4; /* Adjust line height for readability */
+        }
+
+        .footer-copyright {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive adjustments for footer */
+        @media (max-width: 768px) {
+            .footer-section {
+                padding: 40px 15px;
+            }
+            .footer-bottom {
+                grid-template-columns: 1fr; /* Stack all sections vertically on small screens */
+                gap: 20px; /* Space between stacked sections */
+            }
+            .footer-left,
+            .footer-center,
+            .footer-right {
+                width: 100%; /* Take full width */
+                justify-content: center; /* Center content horizontally */
+                align-items: center; /* Center items vertically */
+                text-align: center; /* Center text */
+            }
+            .social-links {
+                flex-direction: row; /* Change to row for social links on small screens */
+                gap: 15px;
+            }
+            .footer-logo img {
+                height: 40px; /* Revert logo size on mobile */
+                transform: scale(1);
+            }
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+    <div id="blob-cursor"></div>
+    <div class="page-transition-overlay-left" id="pageTransitionOverlayLeft"></div>
+    <div class="page-transition-overlay-right" id="pageTransitionOverlayRight"></div>
+
+    <div id="mainContentWrapper">
+        <nav class="main-nav">
+            <a href="#hero" class="nav-logo">
+                <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/mainlogo.svg"
+                    alt="Faiz Dzigns Logo">
+            </a>
+            <div class="nav-links">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#services" class="nav-item">Services</a>
+                <a href="#my-work" class="nav-item">My Work</a>
+                <a href="#cta" class="nav-item">Contact</a>
+            </div>
+        </nav>
+
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title"><span class="char">F</span><span
+                        class="char">a</span><span class="char">i</span><span class="char">z</span> <span
+                        class="char">D</span><span class="char">z</span><span class="char">i</span><span
+                        class="char">g</span><span class="char">n</span><span class="char">s</span></h1>
+                <p class="hero-subtitle">Crafting Visual Stories, One Design at a Time.</p>
+            </div>
+            <div class="bg-circle" style="top: 20%; left: 10%; width: 80px; height: 80px;"></div>
+            <div class="bg-square" style="top: 40%; right: 15%; width: 60px; height: 60px;"></div>
+            <div class="bg-circle" style="bottom: 15%; left: 30%; width: 120px; height: 120px;"></div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2 class="about-heading">Hi! My name is Faiz</h2>
+                    <p class="about-description">
+                        I'm a freelance graphic designer passionate about helping startups, businesses, and educational
+                        institutions create bold, minimal brand identities that stand out.
+                    </p>
+                    <a href="about-me.html" class="about-btn" id="learnMoreBtn">Learn More About Me</a>
+                </div>
+            </div>
+            <div class="bg-square" style="top: 10%; left: 20%; width: 50px; height: 50px;"></div>
+            <div class="bg-circle" style="bottom: 30%; right: 10%; width: 70px; height: 70px;"></div>
+        </section>
+
+        <section id="focus" class="about-section">
+            <div class="container">
+                <div>
+                    <h2 class="about-heading">My Focus: Value & Impact</h2>
+                    <p class="about-description">
+                        I craft unique, eye-catching visuals that truly represent your brand and offer unlimited
+                        revisions
+                        to guarantee your satisfaction.
+                    </p>
+                </div>
+            </div>
+            <div class="bg-circle" style="top: 30%; right: 20%; width: 90px; height: 90px;"></div>
+            <div class="bg-square" style="bottom: 10%; left: 15%; width: 40px; height: 40px;"></div>
+        </section>
+
+        <section id="skills" class="services-section section-dark">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-container">
+                <div class="skills-track">
+                    <div class="skill-card">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/Ps.svg"
+                            alt="Photoshop Icon">
+                        Adobe Photoshop
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/Illustrator.svg"
+                            alt="Illustrator Icon">
+                        Adobe Illustrator
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/ae.svg"
+                            alt="After Effects Icon">
+                        Adobe After Effects
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/inkscape.svg"
+                            alt="Inkscape Icon">
+                        Inkscape
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/canva.svg"
+                            alt="Canva Icon">
+                        Canva
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/Ap.svg"
+                            alt="Affinity Photo Icon">
+                        Affinity Photo
+                    </div>
+
+                    <div class="skill-card">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/Ps.svg"
+                            alt="Photoshop Icon">
+                        Adobe Photoshop
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/Illustrator.svg"
+                            alt="Illustrator Icon">
+                        Adobe Illustrator
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/ae.svg"
+                            alt="After Effects Icon">
+                        Adobe After Effects
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/inkscape.svg"
+                            alt="Inkscape Icon">
+                        Inkscape
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/canva.svg"
+                            alt="Canva Icon">
+                        Canva
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/skills%20icons/Ap.svg"
+                            alt="Affinity Photo Icon">
+                        Affinity Photo
+                    </div>
+                </div>
+            </div>
+            <div class="bg-circle bg-shape-light" style="top: 15%; left: 80%; width: 90px; height: 90px;"></div>
+            <div class="bg-square bg-shape-light" style="bottom: 10%; right: 5%; width: 70px; height: 70px;"></div>
+        </section>
+
+        <section id="services" class="services-section section-dark">
+            <h2 class="section-title">My Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-fingerprint service-icon"></i>
+                    <h3>Brand Identity</h3>
+                    <p>Memorable visual identities.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-signature service-icon"></i>
+                    <h3>Logo Design</h3>
+                    <p>Unique, impactful logos.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-video service-icon"></i>
+                    <h3>Logo Animation</h3>
+                    <p>Dynamic logo animations.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-icons service-icon"></i>
+                    <h3>Social Media Design</h3>
+                    <p>Eye-catching social content.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-file-alt service-icon"></i>
+                    <h3>Collaterals</h3>
+                    <p>Business cards, brochures, etc.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-bullhorn service-icon"></i>
+                    <h3>Marketing Materials</h3>
+                    <p>Ads, posters, and banners.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-palette service-icon"></i>
+                    <h3>Custom Brand Assets</h3>
+                    <p>Patterns, illustrations, icons.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-comments service-icon"></i>
+                    <h3>Design Consultancy</h3>
+                    <p>Expert design advice.</p>
+                </div>
+            </div>
+            <div class="bg-square bg-shape-light" style="top: 25%; right: 30%; width: 70px; height: 70px;"></div>
+            <div class="bg-circle bg-shape-light" style="bottom: 20%; left: 25%; width: 60px; height: 60px;"></div>
+        </section>
+
+        <section id="my-work" class="my-work-section section-white">
+            <h2 class="section-title">My Work</h2>
+            <div class="my-work-grid">
+                <a href="aurelia.html" class="project-card-link transition-link">
+                    <div class="project-card">
+                        <img src="Project/Aurelia/1.png" alt="Aurelia Logo">
+                        <h3>Aurelia</h3>
+                        <p>Logo Design for a Luxury Apparel Brand.</p>
+                        <span class="primary-btn">View Details</span>
+                    </div>
+                </a>
+
+                <a href="veq.html" class="project-card-link transition-link">
+                    <div class="project-card">
+                        <img src="Project/Veq/1.png" alt="VEQ Logo">
+                        <h3>VEQ</h3>
+                        <p>Logo Design for a Sneaker Brand.</p>
+                        <span class="primary-btn">View Details</span>
+                    </div>
+                </a>
+
+                <a href="zovet.html" class="project-card-link transition-link">
+                    <div class="project-card">
+                        <img src="Project/Zovet/1.png" alt="Zovet Logo">
+                        <h3>ZOVET</h3>
+                        <p>Brand Identity Design for a Luxury Watch Company.</p>
+                        <span class="primary-btn">View Details</span>
+                    </div>
+                </a>
+            </div>
+            <div class="view-all-work-btn-container">
+                <a href="work.html" class="view-all-work-btn transition-link">View All Work</a>
+            </div>
+        </section>
+
+        <section id="cta" class="cta-section">
+            <div class="cta-svg-background">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <path d="M 20 0 L 0 0 L 0 20" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                        </pattern>
+                        <filter id="displacementFilter">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="turbulence"/>
+                            <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+                        </filter>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grid)" filter="url(#displacementFilter)"/>
+                    <circle cx="50" cy="50" r="30" fill="var(--accent-color)" opacity="0.3"/>
+                    <circle cx="150" cy="150" r="40" fill="var(--accent-color)" opacity="0.2"/>
+                    <rect x="20" y="120" width="60" height="60" fill="var(--accent-color)" opacity="0.2" transform="rotate(45 50 150)"/>
+                    <rect x="120" y="20" width="70" height="70" fill="var(--accent-color)" opacity="0.3" transform="rotate(30 155 55)"/>
+                </svg>
+            </div>
+            <div class="cta-content">
+                <h2 class="cta-title" id="ctaTitle">
+                    Ready to Bring Your Vision to Life?
+                </h2>
+                <p class="cta-description">Let's collaborate and create something amazing together. Contact me to discuss your project needs!</p>
+                <a href="https://ig.me/m/faiz_dzigns" class="cta-btn" target="_blank" rel="noopener noreferrer">Let's Talk!</a>
+            </div>
+        </section>
+
+        <footer class="footer-section">
+            <div class="footer-bottom">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <img src="https://raw.githubusercontent.com/FaizDzigns/Portfolio-assets/main/mainlogo.svg" alt="Faiz Dzigns Logo">
+                    </div>
+                </div>
+                <div class="footer-center">
+                    <p class="footer-text">Designed and Developed by Faiz Dzigns</p>
+                    <p class="footer-copyright">&copy; 2025 Faiz Dzigns. All rights reserved.</p>
+                </div>
+                <div class="footer-right">
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/faiz_dzigns/" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/faiz-dzigns/" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div id="projectIdeaModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h3>Generated Project Idea</h3>
+            <p id="ideaText">Loading a creative idea...</p>
+            <div class="loading-indicator" id="loadingIndicator">Generating idea...</div>
+        </div>
+    </div>
+
+    <script>
+        // Immediately Invoked Function Expression (IIFE) for scope isolation
+        (function () {
+            'use strict'; // Enable strict mode for better error checking
+
+            // Define CSS variables in JS for easy access
+            const cssVars = getComputedStyle(document.documentElement);
+            const darkColor = cssVars.getPropertyValue('--dark').trim();
+            const whiteColor = cssVars.getPropertyValue('--white').trim();
+            const accentColor = cssVars.getPropertyValue('--accent-color').trim();
+
+            // Ensure GSAP plugins are registered once the DOM is ready
+            document.addEventListener('DOMContentLoaded', () => {
+                gsap.registerPlugin(ScrollTrigger);
+
+                // --- Page Transition Out Animation (on page load) ---
+                const pageTransitionOverlayLeft = document.getElementById('pageTransitionOverlayLeft');
+                const pageTransitionOverlayRight = document.getElementById('pageTransitionOverlayRight');
+                const mainContentWrapper = document.getElementById('mainContentWrapper');
+
+                if (pageTransitionOverlayLeft && pageTransitionOverlayRight && mainContentWrapper) {
+                    // Set initial state for overlays (fully covering)
+                    gsap.set(pageTransitionOverlayLeft, {
+                        x: '0%'
+                    });
+                    gsap.set(pageTransitionOverlayRight, {
+                        x: '0%'
+                    });
+
+                    const tl = gsap.timeline({
+                        onComplete: () => {
+                            // Re-enable interactions after animation
+                            pageTransitionOverlayLeft.style.pointerEvents = 'none';
+                            pageTransitionOverlayRight.style.pointerEvents = 'none';
+                            // Animate main content in after overlays are gone
+                            gsap.to(mainContentWrapper, {
+                                opacity: 1,
+                                translateY: 0,
+                                duration: 0.7,
+                                ease: "power3.out"
+                            });
+                        }
+                    });
+
+                    tl.to(pageTransitionOverlayLeft, {
+                        x: '-100%', // Slide out to left
+                        duration: 0.7,
+                        ease: "power4.inOut"
+                    }, 0); // Start at the same time
+
+                    tl.to(pageTransitionOverlayRight, {
+                        x: '100%', // Slide out to right
+                        duration: 0.7,
+                        ease: "power4.inOut"
+                    }, 0); // Start at the same time
+
+                } else {
+                    console.warn("Page Transition Overlays or Main Content Wrapper not found. Incoming transition will not work.");
+                    if (mainContentWrapper) {
+                        mainContentWrapper.style.opacity = 1;
+                        mainContentWrapper.style.transform = 'translateY(0)';
+                    }
+                }
+
+
+                // --- Hero Section Animations ---
+                // Animate characters of the hero title
+                const heroTitleChars = gsap.from('.hero-title .char', {
+                    opacity: 0,
+                    y: 100,
+                    stagger: 0.05,
+                    duration: 1,
+                    ease: "power3.out",
+                    delay: 0.5
+                });
+
+                // --- Updated: Hero Title Hover Blur (per character, fast revert) ---
+                const heroTitleIndividualChars = document.querySelectorAll('.hero-title .char');
+
+                if (heroTitleIndividualChars.length > 0) {
+                    heroTitleIndividualChars.forEach(char => {
+                        char.addEventListener('mouseenter', () => {
+                            gsap.killTweensOf(char); // Kill any ongoing animation on this specific character
+                            gsap.to(char, {
+                                filter: 'blur(4px)', // Apply 4px blur
+                                duration: 0.1, // Very fast blur on hover
+                                ease: "power1.out",
+                                overwrite: "auto" // Ensure smooth transitions even with rapid movement
+                            });
+                        });
+
+                        char.addEventListener('mouseleave', () => {
+                            gsap.killTweensOf(char); // Kill any ongoing animation on this specific character
+                            gsap.to(char, {
+                                filter: 'blur(0px)', // Remove blur
+                                duration: 0.05, // Instant revert on mouse leave
+                                ease: "power1.out",
+                                overwrite: "auto"
+                            });
+                        });
+                    });
+                } else {
+                    console.warn("Hero title characters not found. Hero title hover effect will not work.");
+                }
+
+
+                // Animate the hero subtitle with a clip-path effect
+                gsap.from('.hero-subtitle', {
+                    clipPath: 'inset(100% 0 0 0)',
+                    y: 20,
+                    duration: 1.2,
+                    ease: "expo.out",
+                    delay: 1.5
+                });
+
+                // --- Navigation Animations ---
+                // Animate the main navigation bar
+                gsap.from('.main-nav', {
+                    opacity: 0,
+                    y: -50,
+                    duration: 1,
+                    ease: 'power2.out'
+                });
+
+                // Animate individual navigation items
+                gsap.from('.nav-links .nav-item', {
+                    opacity: 0,
+                    y: -30,
+                    stagger: 0.1,
+                    duration: 0.7,
+                    ease: 'power2.out',
+                    delay: 0.5
+                });
+
+                // --- Floating Navigation Bar Logic (no dynamic changes needed now) ---
+                const nav = document.querySelector('.main-nav');
+                if (nav) {
+                    function updateNavBackground() {
+                        // No-op or specific scroll-based effects if desired, but not theme-related.
+                    }
+                    window.addEventListener('scroll', updateNavBackground);
+                    updateNavBackground();
+                } else {
+                    console.warn("Navigation element '.main-nav' not found. Navigation background will not update dynamically.");
+                }
+
+
+                // --- About Section Heading Animations (Wipe In) ---
+                const aboutHeadings = document.querySelectorAll('.about-heading');
+                aboutHeadings.forEach(heading => {
+                    gsap.fromTo(heading, {
+                        clipPath: 'inset(100% 0 0 0)', // Start hidden at the bottom
+                        y: 20 // Slight initial offset
+                    }, {
+                        clipPath: 'inset(0% 0 0 0)', // Wipe in fully
+                        y: 0,
+                        duration: 1.2,
+                        ease: "power4.out", // Smooth and modern ease
+                        scrollTrigger: {
+                            trigger: heading,
+                            start: 'top 90%', // Changed to viewport trigger
+                            toggleActions: 'play none none none'
+                        }
+                    });
+                });
+
+                // --- About Section Description Text Animation (Wipe In) ---
+                const aboutDescriptions = document.querySelectorAll('.about-description');
+                aboutDescriptions.forEach(description => {
+                    gsap.fromTo(description, {
+                        clipPath: 'inset(100% 0 0 0)', // Start hidden at the bottom
+                        y: 20 // Slight initial offset
+                    }, {
+                        clipPath: 'inset(0% 0 0 0)', // Wipe in fully
+                        y: 0,
+                        duration: 1.2,
+                        ease: "power4.out", // Smooth and modern ease
+                        delay: 0.2, // Slight delay after heading
+                        scrollTrigger: {
+                            trigger: description,
+                            start: 'top 90%', // Changed to viewport trigger
+                            toggleActions: 'play none none none'
+                        }
+                    });
+                });
+
+                // --- Section Titles Animation (Wipe In) ---
+                gsap.utils.toArray('.section-title').forEach(title => {
+                    gsap.fromTo(title, {
+                        clipPath: 'inset(100% 0 0 0)', // Start hidden at the bottom
+                        y: 50 // Initial offset
+                    }, {
+                        clipPath: 'inset(0% 0 0 0)', // Wipe in fully
+                        y: 0,
+                        duration: 1,
+                        ease: 'power3.out', // Smooth ease
+                        scrollTrigger: {
+                            trigger: title,
+                            start: 'top 90%', // Changed to viewport trigger
+                            toggleActions: 'play none none none',
+                        }
+                    });
+                });
+
+
+                // --- Services Section Grid Animation ---
+                gsap.from('.services-grid', {
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: '#services',
+                        start: 'top 90%', // Changed to viewport trigger
+                        toggleActions: 'play none none none'
+                    }
+                });
+
+                // --- My Work Section Grid Animation ---
+                gsap.from('.my-work-grid', {
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: '#my-work',
+                        start: 'top 90%', // Changed to viewport trigger
+                        toggleActions: 'play none none none'
+                    }
+                });
+
+                // --- CTA Section Animations ---
+                gsap.from('.cta-content', {
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: '#cta',
+                        start: 'top 90%', // Trigger when the top of the CTA section enters the viewport
+                        toggleActions: 'play none none none'
+                    }
+                });
+
+                // --- Skills Section Seamless Looping Animation ---
+                const skillsTrack = document.querySelector('.skills-track');
+                if (skillsTrack) {
+                    const cardEffectiveWidth = 300 + 20;
+                    const numberOfUniqueCards = 6;
+
+                    const scrollDistance = cardEffectiveWidth * numberOfUniqueCards;
+
+                    gsap.set(skillsTrack, {
+                        x: 0
+                    });
+
+                    const skillsTimeline = gsap.timeline({
+                        repeat: -1,
+                        defaults: {
+                            ease: "none"
+                        }
+                    });
+
+                    skillsTimeline.to(skillsTrack, {
+                        x: -scrollDistance,
+                        duration: 20
+                    });
+                } else {
+                    console.warn("Element '.skills-track' not found for animation. Skills section animation will not work.");
+                }
+
+            }); // End of DOMContentLoaded
+
+            // --- Glowing Blob Cursor Animation ---
+            const blobCursor = document.getElementById('blob-cursor');
+            if (blobCursor) {
+                document.addEventListener('mousemove', (e) => {
+                    let x = e.clientX;
+                    let y = e.clientY;
+
+                    gsap.to(blobCursor, {
+                        duration: 0.3,
+                        x: x,
+                        y: y,
+                        overwrite: "auto"
+                    });
+
+                    const elementUnderCursor = document.elementFromPoint(x, y);
+                    let targetColor = darkColor;
+
+                    const closestDarkSection = elementUnderCursor.closest('#skills, #services, #cta, .footer-section'); // Added #cta and footer
+                    const closestDarkContainer = elementUnderCursor.closest('.about-section .container');
+
+                    if (closestDarkSection || closestDarkContainer) {
+                        targetColor = accentColor;
+                    }
+
+                    blobCursor.style.backgroundColor = targetColor;
+                    blobCursor.style.boxShadow = `0 0 20px ${targetColor}`;
+
+                });
+            } else {
+                console.warn("Blob cursor element with ID 'blob-cursor' not found. Custom cursor animation will not work.");
+            }
+
+            // --- Page Transition Logic (for all links) ---
+            const allNavigableLinks = document.querySelectorAll('a[href^="#"], a[href$=".html"]'); // Select all internal links and .html links
+            const pageTransitionOverlayLeft = document.getElementById('pageTransitionOverlayLeft');
+            const pageTransitionOverlayRight = document.getElementById('pageTransitionOverlayRight');
+
+            if (pageTransitionOverlayLeft && pageTransitionOverlayRight) {
+                allNavigableLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        const href = link.getAttribute('href');
+
+                        // Check if it's an internal hash link (e.g., #about)
+                        if (href && href.startsWith('#')) {
+                            e.preventDefault(); // Prevent default jump behavior
+                            const targetId = href.substring(1); // Get the ID without '#'
+                            const targetElement = document.getElementById(targetId);
+
+                            if (targetElement) {
+                                // Smooth scroll to the target element
+                                targetElement.scrollIntoView({
+                                    behavior: 'smooth'
+                                });
+                            } else {
+                                console.warn(`Element with ID '${targetId}' not found for smooth scroll.`);
+                            }
+                        } else {
+                            // Existing page transition logic for other links (e.g., .html files)
+                            const currentUrl = window.location.origin + window.location.pathname;
+                            const destinationUrl = link.href;
+                            const isExternalLink = !destinationUrl.startsWith(window.location.origin);
+
+                            // Do not apply transition to external links or the Instagram DM link
+                            if (isExternalLink || destinationUrl.includes('ig.me')) {
+                                return;
+                            }
+
+                            e.preventDefault(); // Prevent default link behavior for full page transitions
+
+                            const tl = gsap.timeline({
+                                onStart: () => {
+                                    // Block interactions during transition
+                                    pageTransitionOverlayLeft.style.pointerEvents = 'auto';
+                                    pageTransitionOverlayRight.style.pointerEvents = 'auto';
+                                },
+                                onComplete: () => {
+                                    window.location.href = destinationUrl; // Navigate once animation is complete
+                                }
+                            });
+
+                            tl.to(pageTransitionOverlayLeft, {
+                                x: '0%', // Slide in from left
+                                duration: 0.7,
+                                ease: "power4.inOut"
+                            }, 0); // Start at the same time
+
+                            tl.to(pageTransitionOverlayRight, {
+                                x: '0%', // Slide in from right
+                                duration: 0.7,
+                                ease: "power4.inOut"
+                            }, 0); // Start at the same time
+                        }
+                    });
+                });
+            } else {
+                console.warn("Page Transition Overlays not found. Page transitions will not work.");
+            }
+
+        })(); // End of IIFE
+    </script>
+</body>
+
+</html>
