@@ -888,8 +888,10 @@
         }
 
         .footer-logo img {
-            height: 60px;
-            transform: scale(1.2);
+            height: auto; /* Changed height to auto for better scaling */
+            width: 100px; /* Set a fixed width to control size */
+            max-width: 100%; /* Ensure it doesn't overflow its container */
+            transform: none; /* Removed transform scale to fix cutoff */
         }
 
         .footer-bottom {
