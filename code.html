@@ -1537,43 +1537,33 @@
                 }
 
 
-                // --- About Section Heading Animations (Wipe In) ---
-                const aboutHeadings = document.querySelectorAll('.about-heading');
-                aboutHeadings.forEach(heading => {
-                    gsap.fromTo(heading, {
-                        opacity: 0, // Start hidden
-                        y: 20 // Slight initial offset
-                    }, {
-                        opacity: 1, // Fade in
-                        y: 0,
-                        duration: 1.2,
-                        ease: "power4.out", // Smooth and modern ease
-                        scrollTrigger: {
-                            trigger: heading,
-                            start: 'top 90%', // Changed to viewport trigger
-                            toggleActions: 'play none none none'
-                        }
-                    });
+                // --- About Section Heading Animations (Always Visible, subtle fade-in) ---
+                // Ensure headings are visible by default in CSS, then animate.
+                gsap.from('.about-heading', {
+                    opacity: 0,
+                    y: 20,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: '.about-heading',
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
+                    }
                 });
 
-                // --- About Section Description Text Animation (Wipe In) ---
-                const aboutDescriptions = document.querySelectorAll('.about-description');
-                aboutDescriptions.forEach(description => {
-                    gsap.fromTo(description, {
-                        opacity: 0, // Start hidden
-                        y: 20 // Slight initial offset
-                    }, {
-                        opacity: 1, // Fade in
-                        y: 0,
-                        duration: 1.2,
-                        ease: "power4.out", // Smooth and modern ease
-                        delay: 0.2, // Slight delay after heading
-                        scrollTrigger: {
-                            trigger: description,
-                            start: 'top 90%', // Changed to viewport trigger
-                            toggleActions: 'play none none none'
-                        }
-                    });
+                // --- About Section Description Text Animation (Always Visible, subtle fade-in) ---
+                // Ensure descriptions are visible by default in CSS, then animate.
+                gsap.from('.about-description', {
+                    opacity: 0,
+                    y: 20,
+                    duration: 1,
+                    delay: 0.2, // Slight delay after heading
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: '.about-description',
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
+                    }
                 });
 
                 // --- Section Titles Animation (Wipe In) ---
@@ -1595,21 +1585,20 @@
                 });
 
 
-                // --- Services Section Grid Animation ---
-                gsap.fromTo('.services-grid', {
+                // --- Services Section Cards Animation (Staggered Fade-in) ---
+                gsap.from('.service-card', {
                     opacity: 0,
-                    y: 50
-                }, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
+                    y: 50,
+                    stagger: 0.1, // Stagger animation for each card
+                    duration: 0.8,
                     ease: 'power2.out',
                     scrollTrigger: {
-                        trigger: '#services',
-                        start: 'top 90%', // Changed to viewport trigger
+                        trigger: '#services', // Trigger when the services section comes into view
+                        start: 'top 90%',
                         toggleActions: 'play none none none'
                     }
                 });
+
 
                 // --- My Work Section Grid Animation ---
                 gsap.from('.my-work-grid', {
