@@ -1405,7 +1405,7 @@
             document.addEventListener('DOMContentLoaded', () => {
                 gsap.registerPlugin(ScrollTrigger);
 
-                // --- Page Transition Out Animation (on page load) ---
+                // --- Page Transition Out Animation (on page load) --- (ALWAYS ACTIVE)
                 const pageTransitionOverlayLeft = document.getElementById('pageTransitionOverlayLeft');
                 const pageTransitionOverlayRight = document.getElementById('pageTransitionOverlayRight');
                 const mainContentWrapper = document.getElementById('mainContentWrapper');
@@ -1455,7 +1455,7 @@
                 }
 
 
-                // --- Hero Section Animations ---
+                // --- Hero Section Animations (ALWAYS ACTIVE) ---
                 // Animate characters of the hero title
                 const heroTitleChars = gsap.from('.hero-title .char', {
                     opacity: 0,
@@ -1505,171 +1505,111 @@
                     delay: 1.5
                 });
 
-                // --- Navigation Animations ---
-                // Animate the main navigation bar
-                gsap.from('.main-nav', {
-                    opacity: 0,
-                    y: -50,
-                    duration: 1,
-                    ease: 'power2.out'
-                });
-
-                // Animate individual navigation items
-                gsap.from('.nav-links .nav-item', {
-                    opacity: 0,
-                    y: -30,
-                    stagger: 0.1,
-                    duration: 0.7,
-                    ease: 'power2.out',
-                    delay: 0.5
-                });
-
-                // --- Floating Navigation Bar Logic (no dynamic changes needed now) ---
-                const nav = document.querySelector('.main-nav');
-                if (nav) {
-                    function updateNavBackground() {
-                        // No-op or specific scroll-based effects if desired, but not theme-related.
-                    }
-                    window.addEventListener('scroll', updateNavBackground);
-                    updateNavBackground();
-                } else {
-                    console.warn("Navigation element '.main-nav' not found. Navigation background will not update dynamically.");
-                }
-
-
-                // --- About Section Heading Animations (Always Visible, subtle fade-in) ---
-                // Ensure headings are visible by default in CSS, then animate.
-                gsap.from('.about-heading', {
-                    opacity: 0,
-                    y: 20,
-                    duration: 1,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: '.about-heading',
-                        start: 'top 90%',
-                        toggleActions: 'play none none none'
-                    }
-                });
-
-                // --- About Section Description Text Animation (Always Visible, subtle fade-in) ---
-                // Ensure descriptions are visible by default in CSS, then animate.
-                gsap.from('.about-description', {
-                    opacity: 0,
-                    y: 20,
-                    duration: 1,
-                    delay: 0.2, // Slight delay after heading
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: '.about-description',
-                        start: 'top 90%',
-                        toggleActions: 'play none none none'
-                    }
-                });
-
-                // --- Section Titles Animation (Wipe In) ---
-                gsap.utils.toArray('.section-title').forEach(title => {
-                    gsap.fromTo(title, {
-                        clipPath: 'inset(100% 0 0 0)', // Start hidden at the bottom
-                        y: 50 // Initial offset
-                    }, {
-                        clipPath: 'inset(0% 0 0 0)', // Wipe in fully
-                        y: 0,
-                        duration: 1,
-                        ease: 'power3.out', // Smooth ease
-                        scrollTrigger: {
-                            trigger: title,
-                            start: 'top 90%', // Changed to viewport trigger
-                            toggleActions: 'play none none none',
-                        }
-                    });
-                });
-
-
-                // --- Services Section Cards Animation (Staggered Fade-in) ---
-                gsap.from('.service-card', {
-                    opacity: 0,
-                    y: 50,
-                    stagger: 0.1, // Stagger animation for each card
-                    duration: 0.8,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: '#services', // Trigger when the services section comes into view
-                        start: 'top 90%',
-                        toggleActions: 'play none none none'
-                    }
-                });
-
-
-                // --- My Work Section Grid Animation ---
-                gsap.from('.my-work-grid', {
-                    opacity: 0,
-                    y: 50,
-                    duration: 1,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: '#my-work',
-                        start: 'top 90%', // Changed to viewport trigger
-                        toggleActions: 'play none none none'
-                    }
-                });
-
-                // --- CTA Section Animations ---
-                gsap.from('.cta-content', {
-                    opacity: 0,
-                    y: 50,
-                    duration: 1,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: '#cta',
-                        start: 'top 90%', // Trigger when the top of the CTA section enters the viewport
-                        toggleActions: 'play none none none'
-                    }
-                });
-
-                // --- Skills Section Seamless Looping Animation ---
+                // --- Skills Section Seamless Looping Animation (Conditional) ---
+                // Define this function outside matchMedia so it can be called and controlled
                 const skillsTrack = document.querySelector('.skills-track');
-                let skillsTimeline; // Declare timeline variable outside to control it
+                let skillsTimeline;
 
-                function setupSkillsAnimation() {
+                function setupSkillsAnimation(enable) {
                     if (!skillsTrack) {
-                        console.warn("Element '.skills-track' not found for animation. Skills section animation will not work.");
+                        console.warn("Element '.skills-track' not found for animation.");
                         return;
                     }
 
-                    // Always kill any existing animation on skillsTrack before re-evaluating
-                    gsap.killTweensOf(skillsTrack);
-                    skillsTimeline = null; // Ensure the global reference is cleared
+                    gsap.killTweensOf(skillsTrack); // Always kill existing tweens
+                    skillsTimeline = null; // Clear timeline reference
 
-                    // Reset any inline styles that GSAP might have applied
-                    gsap.set(skillsTrack, { x: 0, width: 'auto' }); // Reset x and clear width property
+                    if (enable) {
+                        // Set the width of the skills-track to accommodate duplicated content for seamless loop
+                        const cardEffectiveWidth = 300 + 20; // card width + margin
+                        const numberOfUniqueCards = 6; // Number of unique cards before duplication
+                        const totalUniqueWidth = cardEffectiveWidth * numberOfUniqueCards;
+                        skillsTrack.style.width = `${totalUniqueWidth * 2}px`;
 
-                    // Always enable continuous animation regardless of screen size
-                    const cardEffectiveWidth = 300 + 20; // card width + margin
-                    const numberOfUniqueCards = 6; // Number of unique cards before duplication
-                    const totalUniqueWidth = cardEffectiveWidth * numberOfUniqueCards;
-
-                    // Set the width of the skills-track to accommodate duplicated content for seamless loop
-                    skillsTrack.style.width = `${totalUniqueWidth * 2}px`;
-
-                    skillsTimeline = gsap.timeline({
-                        repeat: -1, // Loop indefinitely
-                        defaults: { ease: "none" }
-                    });
-
-                    skillsTimeline.to(skillsTrack, {
-                        x: -totalUniqueWidth,
-                        duration: 20, // Adjust duration for speed
-                    });
+                        skillsTimeline = gsap.timeline({
+                            repeat: -1,
+                            defaults: { ease: "none" }
+                        });
+                        skillsTimeline.to(skillsTrack, {
+                            x: -totalUniqueWidth,
+                            duration: 20,
+                        });
+                    } else {
+                        // If disabled, ensure it's reset to its natural position
+                        gsap.set(skillsTrack, { x: 0, width: 'auto' });
+                    }
                 }
 
-                // Initial setup
-                setupSkillsAnimation();
+                // --- ScrollTrigger.matchMedia for conditional animations ---
+                ScrollTrigger.matchMedia({
+                    // Desktop (min-width 769px)
+                    "(min-width: 769px)": function() {
+                        // Navigation Animations
+                        gsap.from('.main-nav', { opacity: 0, y: -50, duration: 1, ease: 'power2.out' });
+                        gsap.from('.nav-links .nav-item', { opacity: 0, y: -30, stagger: 0.1, duration: 0.7, ease: 'power2.out', delay: 0.5 });
 
-                // Re-setup animation on window resize
-                let resizeTimeout;
-                window.addEventListener('resize', () => {
-                    clearTimeout(resizeTimeout);
-                    resizeTimeout = setTimeout(setupSkillsAnimation, 250); // Debounce resize
+                        // About Section Heading Animations
+                        gsap.from('.about-heading', {
+                            opacity: 0, y: 20, duration: 1, ease: "power3.out",
+                            scrollTrigger: { trigger: '.about-heading', start: 'top 90%', toggleActions: 'play none none none' }
+                        });
+
+                        // About Section Description Text Animation
+                        gsap.from('.about-description', {
+                            opacity: 0, y: 20, duration: 1, delay: 0.2, ease: "power3.out",
+                            scrollTrigger: { trigger: '.about-description', start: 'top 90%', toggleActions: 'play none none none' }
+                        });
+
+                        // Section Titles Animation
+                        gsap.utils.toArray('.section-title').forEach(title => {
+                            gsap.fromTo(title, { clipPath: 'inset(100% 0 0 0)', y: 50 }, {
+                                clipPath: 'inset(0% 0 0 0)', y: 0, duration: 1, ease: 'power3.out',
+                                scrollTrigger: { trigger: title, start: 'top 90%', toggleActions: 'play none none none' }
+                            });
+                        });
+
+                        // Services Section Cards Animation
+                        gsap.from('.service-card', {
+                            opacity: 0, y: 50, stagger: 0.1, duration: 0.8, ease: 'power2.out',
+                            scrollTrigger: { trigger: '#services', start: 'top 90%', toggleActions: 'play none none none' }
+                        });
+
+                        // My Work Section Grid Animation
+                        gsap.from('.my-work-grid', {
+                            opacity: 0, y: 50, duration: 1, ease: 'power2.out',
+                            scrollTrigger: { trigger: '#my-work', start: 'top 90%', toggleActions: 'play none none none' }
+                        });
+
+                        // CTA Section Animations
+                        gsap.from('.cta-content', {
+                            opacity: 0, y: 50, duration: 1, ease: 'power2.out',
+                            scrollTrigger: { trigger: '#cta', start: 'top 90%', toggleActions: 'play none none none' }
+                        });
+
+                        // Enable Skills Section animation on desktop
+                        setupSkillsAnimation(true);
+                    },
+
+                    // Mobile (max-width 768px)
+                    "(max-width: 768px)": function() {
+                        // Disable Skills Section animation on mobile
+                        setupSkillsAnimation(false);
+
+                        // Ensure elements are visible by default on mobile if animations are skipped
+                        gsap.set([
+                            '.main-nav',
+                            '.nav-links .nav-item',
+                            '.about-heading',
+                            '.about-description',
+                            '.section-title',
+                            '.service-card',
+                            '.my-work-grid',
+                            '.cta-content'
+                        ], { opacity: 1, y: 0, clipPath: 'inset(0% 0 0 0)' });
+
+                        // Kill any ScrollTriggers that might have been created by the desktop setup
+                        ScrollTrigger.getAll().forEach(st => st.kill());
+                    }
                 });
 
             }); // End of DOMContentLoaded
@@ -1691,7 +1631,7 @@
                     const elementUnderCursor = document.elementFromPoint(x, y);
                     let targetColor = darkColor;
 
-                    const closestDarkSection = elementUnderCursor.closest('#skills, #services, #cta, .footer-section'); // Added #cta and footer
+                    const closestDarkSection = elementUnderCursor.closest('#skills, #services, #cta, .footer-section');
                     const closestDarkContainer = elementUnderCursor.closest('.about-section .container');
 
                     if (closestDarkSection || closestDarkContainer) {
@@ -1707,7 +1647,7 @@
             }
 
             // --- Page Transition Logic (for all links) ---
-            const allNavigableLinks = document.querySelectorAll('a[href^="#"], a[href$=".html"]'); // Select all internal links and .html links
+            const allNavigableLinks = document.querySelectorAll('a[href^="#"], a[href$=".html"]');
             const pageTransitionOverlayLeft = document.getElementById('pageTransitionOverlayLeft');
             const pageTransitionOverlayRight = document.getElementById('pageTransitionOverlayRight');
 
@@ -1716,55 +1656,39 @@
                     link.addEventListener('click', (e) => {
                         const href = link.getAttribute('href');
 
-                        // Check if it's an internal hash link (e.g., #about)
                         if (href && href.startsWith('#')) {
-                            e.preventDefault(); // Prevent default jump behavior
-                            const targetId = href.substring(1); // Get the ID without '#'
+                            e.preventDefault();
+                            const targetId = href.substring(1);
                             const targetElement = document.getElementById(targetId);
 
                             if (targetElement) {
-                                // Smooth scroll to the target element
-                                targetElement.scrollIntoView({
-                                    behavior: 'smooth'
-                                });
+                                targetElement.scrollIntoView({ behavior: 'smooth' });
                             } else {
                                 console.warn(`Element with ID '${targetId}' not found for smooth scroll.`);
                             }
                         } else {
-                            // Existing page transition logic for other links (e.g., .html files)
                             const currentUrl = window.location.origin + window.location.pathname;
                             const destinationUrl = link.href;
                             const isExternalLink = !destinationUrl.startsWith(window.location.origin);
 
-                            // Do not apply transition to external links or the Instagram DM link
                             if (isExternalLink || destinationUrl.includes('ig.me')) {
                                 return;
                             }
 
-                            e.preventDefault(); // Prevent default link behavior for full page transitions
+                            e.preventDefault();
 
                             const tl = gsap.timeline({
                                 onStart: () => {
-                                    // Block interactions during transition
                                     pageTransitionOverlayLeft.style.pointerEvents = 'auto';
                                     pageTransitionOverlayRight.style.pointerEvents = 'auto';
                                 },
                                 onComplete: () => {
-                                    window.location.href = destinationUrl; // Navigate once animation is complete
+                                    window.location.href = destinationUrl;
                                 }
                             });
 
-                            tl.to(pageTransitionOverlayLeft, {
-                                x: '0%', // Slide in from left
-                                duration: 0.7,
-                                ease: "power4.inOut"
-                            }, 0); // Start at the same time
-
-                            tl.to(pageTransitionOverlayRight, {
-                                x: '0%', // Slide in from right
-                                duration: 0.7,
-                                ease: "power4.inOut"
-                            }, 0); // Start at the same time
+                            tl.to(pageTransitionOverlayLeft, { x: '0%', duration: 0.7, ease: "power4.inOut" }, 0);
+                            tl.to(pageTransitionOverlayRight, { x: '0%', duration: 0.7, ease: "power4.inOut" }, 0);
                         }
                     });
                 });
