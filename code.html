@@ -100,6 +100,21 @@
             letter-spacing: 1px;
         }
 
+        /* Keyframes for the shaking effect */
+        @keyframes shake {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            10% { transform: translate(-1px, -1px) rotate(-0.5deg); }
+            20% { transform: translate(1px, 1px) rotate(0.5deg); }
+            30% { transform: translate(-1px, 1px) rotate(-0.5deg); }
+            40% { transform: translate(1px, -1px) rotate(0.5deg); }
+            50% { transform: translate(-1px, -1px) rotate(-0.5deg); }
+            60% { transform: translate(1px, 1px) rotate(0.5deg); }
+            70% { transform: translate(-1px, 1px) rotate(-0.5deg); }
+            80% { transform: translate(1px, -1px) rotate(0.5deg); }
+            90% { transform: translate(-1px, -1px) rotate(-0.5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
         /* Styles for .about-btn (Learn More About Me) */
         .about-btn {
             display: inline-block;
@@ -111,7 +126,7 @@
             color: var(--white);
             border: 2px solid var(--white);
             border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.1s ease; /* Added transform transition */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
             letter-spacing: 1px;
             text-transform: uppercase;
             text-align: center;
@@ -121,7 +136,9 @@
             background-color: var(--white);
             color: var(--dark);
             border-color: var(--accent-color);
-            transform: translateY(-4px) rotate(2deg); /* More vigorous vibration effect */
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite;
+            backface-visibility: hidden;
+            perspective: 1000px;
         }
 
         /* Modified .primary-btn (View All Work) to match .about-btn */
@@ -132,7 +149,7 @@
             color: var(--white);
             border: 2px solid var(--accent-color);
             border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease; /* Added transform transition */
+            transition: background-color 0.3s ease, color 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-family: var(--garet);
@@ -142,7 +159,9 @@
         .primary-btn:hover {
             background-color: var(--accent-color);
             color: var(--dark);
-            transform: translateY(-4px) rotate(-2deg); /* More vigorous vibration effect */
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite;
+            backface-visibility: hidden;
+            perspective: 1000px;
         }
 
         /* Section Base Styles */
@@ -551,7 +570,7 @@
             font-family: var(--garet);
             font-size: 1.1em;
             font-weight: 700;
-            transition: all 0.3s ease, transform 0.1s ease; /* Added transform transition */
+            transition: all 0.3s ease;
             border: 2px solid var(--accent-color);
             background-color: var(--dark);
             color: var(--white);
@@ -563,7 +582,9 @@
             background-color: var(--accent-color);
             color: var(--dark);
             box-shadow: 0 0 20px var(--accent-color);
-            transform: translateY(-4px) rotate(2deg); /* More vigorous vibration effect */
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite;
+            backface-visibility: hidden;
+            perspective: 1000px;
         }
 
 
@@ -817,7 +838,7 @@
             font-family: var(--garet);
             font-size: 1.3em;
             font-weight: 700;
-            transition: all 0.4s ease, transform 0.1s ease; /* Added transform transition */
+            transition: all 0.4s ease;
             border: 2px solid var(--accent-color);
             background-color: var(--accent-color);
             color: var(--dark);
@@ -830,7 +851,9 @@
             background-color: var(--dark);
             color: var(--accent-color);
             border-color: var(--white);
-            transform: translateY(-10px) rotate(-3deg); /* Increased vibration effect */
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite;
+            backface-visibility: hidden;
+            perspective: 1000px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 30px var(--white);
         }
 
