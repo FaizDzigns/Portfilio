@@ -111,7 +111,7 @@
             color: var(--white);
             border: 2px solid var(--white);
             border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.1s ease; /* Added transform transition */
             letter-spacing: 1px;
             text-transform: uppercase;
             text-align: center;
@@ -121,6 +121,7 @@
             background-color: var(--white);
             color: var(--dark);
             border-color: var(--accent-color);
+            transform: translateY(-2px) rotate(1deg); /* Vibration effect */
         }
 
         /* Modified .primary-btn (View All Work) to match .about-btn */
@@ -131,7 +132,7 @@
             color: var(--white);
             border: 2px solid var(--accent-color);
             border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease; /* Added transform transition */
             text-transform: uppercase;
             letter-spacing: 1px;
             font-family: var(--garet);
@@ -141,6 +142,7 @@
         .primary-btn:hover {
             background-color: var(--accent-color);
             color: var(--dark);
+            transform: translateY(-2px) rotate(-1deg); /* Vibration effect */
         }
 
         /* Section Base Styles */
@@ -549,7 +551,7 @@
             font-family: var(--garet);
             font-size: 1.1em;
             font-weight: 700;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease, transform 0.1s ease; /* Added transform transition */
             border: 2px solid var(--accent-color);
             background-color: var(--dark);
             color: var(--white);
@@ -561,6 +563,7 @@
             background-color: var(--accent-color);
             color: var(--dark);
             box-shadow: 0 0 20px var(--accent-color);
+            transform: translateY(-2px) rotate(1deg); /* Vibration effect */
         }
 
 
@@ -814,7 +817,7 @@
             font-family: var(--garet);
             font-size: 1.3em;
             font-weight: 700;
-            transition: all 0.4s ease;
+            transition: all 0.4s ease, transform 0.1s ease; /* Added transform transition */
             border: 2px solid var(--accent-color);
             background-color: var(--accent-color);
             color: var(--dark);
@@ -827,7 +830,7 @@
             background-color: var(--dark);
             color: var(--accent-color);
             border-color: var(--white);
-            transform: translateY(-5px) scale(1.05);
+            transform: translateY(-7px) rotate(-1deg); /* Increased vibration effect */
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 30px var(--white);
         }
 
